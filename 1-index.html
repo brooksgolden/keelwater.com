@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="keel-mark.svg">
+<title>Keelwater | AI capacity and growth for tax and CAS firms</title>
+<meta name="description" content="Keelwater helps tax and CAS accounting firms put AI to work inside the tools they already use, measure the hours recovered, and turn that capacity into growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14231d;--ink-2:#3b4a44;--muted:#6b7772;--paper:#f7f4ee;--paper-2:#efeae0;--line:#ddd6c8;--green:#1f4d3a;--green-2:#2f6b52;--brass:#b08a4a;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.12}
+h1{font-size:clamp(40px,6vw,68px)}
+h2{font-size:clamp(30px,4vw,44px);margin-bottom:18px}
+h3{font-size:22px;margin-bottom:8px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:640px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:15px 26px;border-radius:6px;transition:.15s}
+.btn-primary{background:var(--green);color:var(--white)}
+.btn-primary:hover{background:var(--green-2)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+header.nav{position:sticky;top:0;z-index:10;background:rgba(247,244,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Outfit,Inter,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.015em}
+.mark{width:28px;height:28px;border-radius:5px;background:var(--green);position:relative}
+.mark:after{content:"";position:absolute;left:6px;bottom:6px;width:10px;height:10px;border-left:3px solid var(--paper);border-bottom:3px solid var(--paper)}
+.nav ul{display:flex;gap:30px;list-style:none;font-size:15px;color:var(--ink-2)}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--ink)}
+.nav .btn{padding:10px 18px;font-size:15px}
+.hero{padding:96px 0 88px}
+.hero h1{max-width:820px;margin-bottom:26px}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hero .note{margin-top:22px;font-size:14px;color:var(--muted)}
+section{padding:88px 0}
+.alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lede,.dark p{color:#c9d1cc}
+.dark .eyebrow{color:#d4b37a}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.list{list-style:none;display:grid;gap:10px;margin-top:14px}
+.list li{padding-left:26px;position:relative;color:var(--ink-2)}
+.list li:before{content:"";position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--brass)}
+.callout{margin-top:26px;font-family:Fraunces,Georgia,serif;font-size:24px;line-height:1.3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.stat{border-top:2px solid #d4b37a;padding-top:18px}
+.stat b{display:block;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:60px;line-height:1;color:var(--paper);margin-bottom:10px}
+.source{margin-top:30px;font-size:13px;color:#93a09a}
+.source a{color:#c9d1cc}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:26px}
+.step .n{font-family:Fraunces,Georgia,serif;color:var(--brass);font-size:15px;margin-bottom:14px}
+.step p{color:var(--ink-2);font-size:15.5px}
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.offer{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:30px;display:flex;flex-direction:column}
+.offer .dur{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-2);margin-bottom:12px}
+.offer p{color:var(--ink-2);font-size:15.5px}
+.offer .list{font-size:15px}
+.partner{margin-top:22px;border:1.5px dashed var(--green-2);border-radius:10px;padding:28px 30px;display:flex;justify-content:space-between;align-items:center;gap:28px;background:#f3f6f2}
+.partner p{color:var(--ink-2);font-size:15.5px;max-width:720px}
+.quote{font-family:Fraunces,Georgia,serif;font-size:clamp(28px,3.4vw,40px);line-height:1.2;max-width:860px}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.fitcard{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:30px}
+.fitcard.no{background:transparent}
+.proof{display:flex;gap:40px;align-items:center}
+.proof .badge{flex:0 0 auto;width:120px;height:120px;border-radius:50%;border:1.5px solid var(--brass);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);padding:14px}
+.founder{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start}
+.portrait{width:220px;height:260px;border-radius:10px;background:linear-gradient(160deg,var(--green),var(--ink));display:flex;align-items:flex-end;padding:18px;color:var(--paper);font-family:Fraunces,Georgia,serif;font-size:20px}
+.founder p{color:var(--ink-2);margin-bottom:14px;max-width:680px}
+.owner{border-left:3px solid var(--brass);padding-left:28px}
+.cta{text-align:center}
+.cta .lede{margin:0 auto 34px}
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.stats.four{grid-template-columns:repeat(4,1fr)}
+.stat sup{font-size:11px;color:#93a09a;margin-left:2px}
+.pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin:36px 0 8px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--line)}
+.pipe span{background:var(--white);text-align:center;padding:14px 8px;font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--green)}
+.leaks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+.leak{border-top:2px solid var(--brass);padding-top:16px}
+.leak p{color:var(--ink-2);font-size:15.5px}
+.closed{margin-top:40px;background:var(--ink);color:var(--paper);border-radius:10px;padding:30px 34px}
+.closed p{color:#c9d1cc;max-width:860px;font-size:16px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
+.trust>div{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px}
+.trust p{color:var(--ink-2);font-size:15px}
+@media (max-width:900px){
+ .stats.four,.leaks,.trust{grid-template-columns:1fr 1fr}
+ .pipe{grid-template-columns:repeat(3,1fr)}
+ .nav ul{display:none}
+ .two,.fit,.founder{grid-template-columns:1fr;gap:32px}
+ .steps{grid-template-columns:1fr 1fr}
+ .offers,.stats{grid-template-columns:1fr}
+ .partner,.proof{flex-direction:column;align-items:flex-start}
+ section{padding:64px 0}
+ .hero{padding:64px 0 60px}
+}
+@media (max-width:520px){.steps,.stats.four,.leaks,.trust{grid-template-columns:1fr}.wrap{padding:0 20px}.nav .btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+ <a class="logo" href="#top"><img src="keel-mark.svg" width="32" height="32" alt="">Keelwater</a>
+ <ul><li><a href="#leaks">Where the hours go</a></li><li><a href="#method">How it works</a></li><li><a href="#services">Services</a></li><li><a href="#fit">Who it's for</a></li><li><a href="#founder">About</a></li></ul>
+ <a class="btn btn-primary" href="#contact">Get a Capacity Audit</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+ <div class="eyebrow">AI capacity and growth for tax and CAS firms</div>
+ <h1>Build more capacity without adding headcount.</h1>
+ <p class="lede">We put AI to work inside the software your firm already runs, from Drake and Lacerte to UltraTax and CCH. Then we turn the hours we recover into more clients, higher-value advisory and a stronger business.</p>
+ <div class="actions"><a class="btn btn-primary" href="#contact">Apply for an AI Capacity Audit</a><a class="btn btn-ghost" href="#partner">Become a Founding Design Partner</a></div>
+ <p class="note">Now booking for the 2027 season: set up October to December, live in January.</p>
+</div></section>
+
+<section class="alt"><div class="wrap two">
+ <div>
+  <div class="eyebrow">The real problem</div>
+  <h2>Your firm doesn't have an AI-awareness problem. It has an implementation problem.</h2>
+ </div>
+ <div>
+  <p class="lede" style="font-size:18px">Your team already has ChatGPT, tax software, practice management, portals and bookkeeping tools. But the work still involves:</p>
+  <ul class="list"><li>Chasing clients for documents</li><li>Re-entering the same data</li><li>Repetitive reconciliation</li><li>Status emails and manual reporting</li><li>Staff bottlenecks every busy season</li></ul>
+  <p class="callout">The result: you can't grow without hiring more people.</p>
+ </div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+ <div class="eyebrow">Where the market is</div>
+ <h2 style="max-width:760px">Almost every firm is trying AI. Very few can show it's paying off.</h2>
+ <div class="stats four">
+  <div class="stat"><b>95%</b><p>of accounting and bookkeeping firms have adopted AI in some form.<sup>1</sup></p></div>
+  <div class="stat"><b>20%</b><p>of those firms can show clear, measurable ROI.<sup>1</sup></p></div>
+  <div class="stat"><b>41%</b><p>of tax preparers got any training on their own tax software.<sup>2</sup></p></div>
+  <div class="stat"><b>93%</b><p>don't use any tool to spot planning opportunities in their clients' returns.<sup>2</sup></p></div>
+ </div>
+ <p class="source">1. Financial Cents, <a href="https://financial-cents.com/resources/guides/the-state-of-ai-in-bookkeeping-accounting/" target="_blank" rel="noopener">The State of AI in Bookkeeping &amp; Accounting</a>. 2. AICPA 2026 tax software survey of 1,808 CPAs, <a href="https://www.thetaxadviser.com/issues/2026/aug/2026-tax-software-survey/" target="_blank" rel="noopener">The Tax Adviser</a>.</p>
+</div></section>
+
+<section id="leaks"><div class="wrap">
+ <div class="eyebrow">Where the hours go</div>
+ <h2 style="max-width:820px">The time doesn't leak inside your tax software. It leaks between the steps.</h2>
+ <p class="lede">Engage, collect, prepare, review, sign, bill. Every handoff is someone copying data, chasing a client or answering "where's my return?" That's where we start.</p>
+ <div class="pipe"><span>Engage</span><span>Collect</span><span>Prepare</span><span>Review</span><span>Sign</span><span>Bill</span></div>
+ <div class="leaks">
+  <div class="leak"><h3>Document chasing</h3><p>Organizers pre-filled from last year, reminders that send themselves, and jobs that move to "ready to prep" the moment a client is complete.</p></div>
+  <div class="leak"><h3>Retyping into the return</h3><p>W-2s, 1099s, K-1s and trial balances flow into the tax software. Staff review flagged fields instead of keying every line.</p></div>
+  <div class="leak"><h3>"Where's my return?"</h3><p>One board showing where every return sits, with client updates that go out automatically as it moves.</p></div>
+  <div class="leak"><h3>Review ping-pong</h3><p>Standard checklists and an AI pre-review that flags common errors and big year-over-year swings before a partner sees it.</p></div>
+  <div class="leak"><h3>Signatures and payment</h3><p>Deliver, e-sign the 8879 and pay in one step, with reminders until it's done.</p></div>
+  <div class="leak"><h3>Advice left on the table</h3><p>After filing, every return gets scanned for planning opportunities, so your best clients hear from you before tax season, not after.</p></div>
+ </div>
+ <div class="closed"><h3>Closed tax software? Still works.</h3><p>Most tax platforms don't offer an open API. Where there's no clean connection, we set up automation that works the software the way a trained staff member would: filling in the fields you'd otherwise retype, with a person reviewing before anything is filed. You keep the software your team already knows.</p></div>
+</div></section>
+
+<section id="method" class="alt"><div class="wrap">
+ <div class="eyebrow">How it works</div>
+ <h2>Baseline. Build. Prove. Grow.</h2>
+ <p class="lede">A simple method that ties every AI change to hours, speed and revenue you can see.</p>
+ <div class="steps">
+  <div class="step"><div class="n">01</div><h3>Baseline</h3><p>Measure the workflow before we touch it, so the results are real.</p></div>
+  <div class="step"><div class="n">02</div><h3>Build</h3><p>Put proven AI and automation into the systems your team already knows. Custom work only where it clearly pays.</p></div>
+  <div class="step"><div class="n">03</div><h3>Prove</h3><p>Track capacity, turnaround, errors, rework and adoption against the baseline.</p></div>
+  <div class="step"><div class="n">04</div><h3>Grow</h3><p>Point the recovered hours at advisory, new clients and better service.</p></div>
+ </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+ <div class="eyebrow">Services</div>
+ <h2>Start small, prove it, then scale what works.</h2>
+ <div class="offers">
+  <div class="offer"><div class="dur">2 to 3 weeks</div><h3>AI Capacity + Governance Audit</h3><p>Find the real bottlenecks and the highest-return fixes.</p>
+   <ul class="list"><li>Workflow map and stack review</li><li>Shadow-AI and security review</li><li>Written AI policy, 7216 consent language and WISP check</li><li>Baseline KPI dashboard</li><li>Ranked roadmap and capacity estimate</li></ul></div>
+  <div class="offer"><div class="dur">90 days</div><h3>Capacity Build</h3><p>Put the highest-return workflows live, with your team trained and human review built in.</p>
+   <ul class="list"><li>Client document collection and intake</li><li>Tax source docs to preparation</li><li>Categorization and bank reconciliation</li><li>Client status and month-end close</li><li>Before-and-after measurement</li></ul></div>
+  <div class="offer"><div class="dur">Ongoing</div><h3>Growth Engine</h3><p>Turn the capacity you've gained into revenue.</p>
+   <ul class="list"><li>Discovery call to tailored proposal, same day</li><li>Advisory service packaging</li><li>Pricing and fixed-fee moves</li><li>Referrals and cross-sell</li><li>Niche positioning and outbound</li><li>New workflow releases each quarter</li></ul></div>
+ </div>
+ <div class="partner" id="partner">
+  <div><h3>Founding Design Partners</h3><p>We're working closely with a small number of firms on a focused two-week capacity sprint: one workflow, measured before and after. In return we ask for honest feedback and, if it works, a case study.</p></div>
+  <a class="btn btn-primary" href="#contact">Apply to be a partner</a>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="eyebrow">What we believe</div>
+ <p class="quote">We're not trying to replace your accountants. Human judgment is the product.</p>
+ <p class="lede" style="margin-top:22px">The goal is to take away the repetitive production work that keeps good accountants from serving more clients and doing more valuable work.</p>
+ <div class="trust">
+  <div><h3>7216 built in</h3><p>Client consent language for AI use, naming the actual providers, set up from day one.</p></div>
+  <div><h3>A human signs off</h3><p>Every automation ends in review by your people. The signing preparer stays in control.</p></div>
+  <div><h3>Your data stays yours</h3><p>Business-grade tools that don't train on your data. No client files in personal AI accounts.</p></div>
+  <div><h3>Security first</h3><p>We check your Written Information Security Plan and MFA setup before we connect anything.</p></div>
+ </div>
+</div></section>
+
+<section id="fit" class="alt"><div class="wrap">
+ <div class="eyebrow">Who it's for</div>
+ <h2>Built for growth-minded tax and CAS firms.</h2>
+ <div class="fit">
+  <div class="fitcard"><h3>A strong fit</h3><ul class="list"><li>Tax and CAS focused, little or no audit work</li><li>Roughly $2M to $15M in revenue</li><li>Owners who want to grow</li><li>Capacity is what's holding you back</li><li>No in-house AI team</li></ul></div>
+  <div class="fitcard no"><h3>Probably not a fit</h3><ul class="list"><li>Looking for a chatbot</li><li>Mainly looking to cut staff</li><li>Not willing to measure results</li><li>Not willing to change how work gets done</li></ul></div>
+ </div>
+</div></section>
+
+<section><div class="wrap proof">
+ <div class="badge">Case study in progress</div>
+ <div><div class="eyebrow">Proof</div><h2 style="margin-bottom:10px">Our founding case study is underway.</h2><p class="lede">The goal for next May: same team, more returns, fewer days waiting on clients, no retyping and no seasonal temps. We only publish real before-and-after numbers from real firms.</p></div>
+</div></section>
+
+<section id="founder" class="alt"><div class="wrap founder">
+ <div class="portrait">Brooks Golden</div>
+ <div>
+  <div class="eyebrow">About the founder</div>
+  <h2>Brooks Golden</h2>
+  <p>I've spent years building growth systems inside B2B service businesses. The same problem kept showing up: growth usually means more people, more coordination and more overhead.</p>
+  <p>AI changes that. I now work with tax and CAS firms to remove repetitive production work, create capacity and turn that capacity into higher-value growth.</p>
+  <p>The goal isn't fewer accountants. It's better-equipped accountants serving more clients and doing more valuable work.</p>
+ </div>
+</div></section>
+
+<section><div class="wrap owner">
+ <div class="eyebrow">For owners</div>
+ <h2 style="max-width:720px">Thinking about the next chapter of your firm?</h2>
+ <p class="lede">For select firms, we're building a long-term ownership model that keeps the team, invests in technology, grows rather than strips cost, and keeps professional judgment local.</p>
+ <p style="margin-top:24px"><a class="btn btn-ghost" href="#contact">Talk about a long-term partnership</a></p>
+</div></section>
+
+<section id="contact" class="dark cta"><div class="wrap">
+ <div class="eyebrow">Get started</div>
+ <h2>See how much capacity is hiding in your firm.</h2>
+ <p class="lede">Tell us a little about your firm and we'll set up a short call to see if an AI Capacity Audit makes sense.</p>
+ <a class="btn btn-primary" style="background:#d4b37a;color:var(--ink)" href="mailto:hello@keelwater.com?subject=AI%20Capacity%20Audit">Apply for an AI Capacity Audit</a>
+ <p class="source" style="margin-top:22px">Or email hello@keelwater.com</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <span>&copy; 2026 Keelwater</span>
+ <span>Keelwater is not a CPA firm and does not provide attest services.</span>
+</div></footer>
+</body>
+</html>
