@@ -8,17 +8,24 @@ document.querySelectorAll('.bars button').forEach(button => {
     detail.append(label, document.createTextNode(button.dataset.detail));
   });
 });
-document.querySelectorAll('.image-tabs button').forEach(button => {
+document.querySelectorAll('.quote-views button').forEach(button => {
   button.addEventListener('click', () => {
-    document.querySelectorAll('.image-tabs button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    const image = document.getElementById('concept-image');
-    image.src = button.dataset.src;
-    image.alt = button.dataset.alt;
+    document.querySelectorAll('.quote-views button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    document.getElementById('quote-before').hidden = button.dataset.quoteView !== 'before';
+    document.getElementById('quote-after').hidden = button.dataset.quoteView !== 'after';
   });
 });
 const viewer = document.getElementById('image-viewer');
-document.querySelectorAll('figure > img, .quote-frame > img').forEach(image => {
-  if (image.id === 'concept-image') return;
+document.querySelectorAll('.email-views button').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.email-views button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    const image = document.getElementById('email-evidence');
+    image.src = button.dataset.src;
+    image.alt = button.dataset.alt;
+    image.parentElement.setAttribute('aria-label', `Enlarge image: ${image.alt}`);
+  });
+});
+document.querySelectorAll('figure > img, .board-image > img').forEach(image => {
   const button = document.createElement('button');
   button.className = 'image-zoom';
   button.setAttribute('aria-label', `Enlarge image: ${image.alt}`);
