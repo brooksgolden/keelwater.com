@@ -22,6 +22,8 @@ document.querySelectorAll('.email-views button').forEach(button => {
     const image = document.getElementById('email-evidence');
     image.src = button.dataset.src;
     image.alt = button.dataset.alt;
+    image.width = Number(button.dataset.width);
+    image.height = Number(button.dataset.height);
     image.parentElement.setAttribute('aria-label', `Enlarge image: ${image.alt}`);
   });
 });
@@ -36,6 +38,7 @@ document.querySelectorAll('figure > img, .board-image > img').forEach(image => {
     const large = viewer.querySelector('img');
     large.src = image.src;
     large.alt = image.alt;
+    viewer.querySelector('.full-image').href = image.src;
     viewer.querySelector('p').textContent = image.closest('figure').querySelector('figcaption')?.textContent || image.alt;
     viewer.showModal();
   });
