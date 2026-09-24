@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../../keel-mark.svg">
+<title>AI Sales Enablement Case Study | Keelwater</title>
+<meta name="description" content="The sales enablement project: an AI system built around a CRM with no API. One rep went from 13th of 15 to 1st of 17 while the workday dropped from 10 hours to 4 to 8.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14231d;--ink-2:#3b4a44;--muted:#6b7772;--paper:#f7f4ee;--paper-2:#efeae0;--line:#ddd6c8;--green:#1f4d3a;--green-2:#2f6b52;--green-3:#e3ece6;--brass:#b08a4a;--brass-2:#d4b37a;--gold:#e8b54d;--white:#fff;--shadow:0 18px 50px -24px rgba(20,35,29,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:136px}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.narrow{max-width:760px}
+h1,h2,h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;letter-spacing:-.005em;line-height:1.18}
+h1{font-size:clamp(34px,5vw,60px)}
+h2{font-size:clamp(28px,3.6vw,42px);margin-bottom:16px}
+h3{font-size:22px;margin-bottom:10px}
+p+p{margin-top:14px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:760px}
+.muted{color:var(--muted)}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:15px 26px;border-radius:6px;transition:.15s}
+.btn-primary{background:var(--green);color:var(--white)}
+.btn-primary:hover{background:var(--green-2)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+section{padding:88px 0}
+.alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lede,.dark p{color:#c9d1cc}
+.dark .eyebrow{color:var(--brass-2)}
+
+/* site header */
+header.nav{position:sticky;top:0;z-index:30;background:rgba(247,244,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Outfit,Inter,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.015em}
+.nav ul{display:flex;gap:30px;list-style:none;font-size:15px;color:var(--ink-2)}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--ink)}
+.nav .btn{padding:10px 18px;font-size:15px}
+
+/* chapter nav */
+.chapnav{position:sticky;top:72px;z-index:20;background:rgba(239,234,224,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.chapnav .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:9px;padding-bottom:9px}
+.chapnav .wrap::-webkit-scrollbar{display:none}
+.chapnav a{flex:0 0 auto;text-decoration:none;font-size:13.5px;font-weight:500;color:var(--ink-2);padding:7px 12px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.chapnav a:hover{border-color:var(--line);background:var(--white)}
+.chapnav a.on{background:var(--ink);color:var(--paper)}
+
+/* hero */
+.hero{padding:80px 0 40px}
+.hero h1{max-width:980px;margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero .who{margin-top:22px;display:flex;align-items:center;gap:14px;font-size:15px;color:var(--ink-2)}
+.hero .who img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--white);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+.kpi{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 22px 20px;position:relative;overflow:hidden}
+.kpi:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--brass-2))}
+.kpi .big{font-family:"Libre Baskerville",Georgia,serif;font-size:clamp(28px,3vw,38px);line-height:1.05;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.kpi .big .from{font-size:.62em;color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.kpi .big .arrow{font-size:.55em;color:var(--brass)}
+.kpi .lab{margin-top:10px;font-size:14.5px;color:var(--ink-2);line-height:1.45}
+.kpi .src{margin-top:8px;font-size:12px;color:var(--muted)}
+
+/* figures */
+.frame{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.frame .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:#fbfaf7;font-size:12.5px;color:var(--muted)}
+.frame .bar i{width:10px;height:10px;border-radius:50%;background:#e1dbcf;display:inline-block}
+.frame .bar i:nth-child(1){background:#e8a598}.frame .bar i:nth-child(2){background:#ebcf8a}.frame .bar i:nth-child(3){background:#a9cfa4}
+.frame .bar b{font-weight:600;color:var(--ink-2);margin-left:6px}
+.frame .bar .crumb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.frame img{width:100%;height:auto;cursor:zoom-in;background:#f3f1ec}
+figure{margin:0;min-width:0}
+.split>*,.charts>*,.arch>*,.map>*,.trio>*,.kpis>*,.nums>*,.costs>*,.loopwrap>*,.server-grid>*,.gallery>*{min-width:0}
+.frame .bar .crumb{min-width:0}
+figcaption{font-size:14px;color:var(--muted);margin-top:12px;line-height:1.5;max-width:900px}
+figcaption b{color:var(--ink-2);font-weight:600}
+.tall-scroll{overflow:hidden}
+.tall-scroll img{cursor:zoom-in}
+
+/* leaderboard */
+.board{margin-top:54px}
+
+/* charts */
+.charts{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;margin-top:40px}
+.chart{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 22px 14px;position:relative}
+.chart h4{font-family:Inter,sans-serif;font-size:15px;font-weight:600;margin-bottom:2px}
+.chart .sub{font-size:13px;color:var(--muted);margin-bottom:10px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart .note{font-size:12px;color:var(--muted);margin-top:6px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-size:12.5px;padding:7px 10px;border-radius:7px;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s;z-index:5}
+.bar-hit{cursor:default}
+
+/* chapters */
+.chap{padding:92px 0;border-top:1px solid var(--line)}
+.chap:first-of-type{border-top:0}
+.chap-head{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;margin-bottom:34px}
+.chap-num{font-family:"Libre Baskerville",Georgia,serif;font-size:64px;line-height:.9;color:var(--brass-2)}
+.chap-head h2{margin-bottom:10px}
+.chap-head .lede{font-size:19px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:34px}
+.trio div{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.trio h5{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-2);margin-bottom:8px}
+.trio p{font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.trio .before h5{color:#9a5b4a}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:-8px 0 30px}
+.chip{background:var(--green-3);color:var(--green);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.chip.brass{background:#f4ead6;color:#7a5c26}
+.pull{margin:34px 0 0;padding:22px 26px;border-left:3px solid var(--brass-2);background:var(--white);border-radius:0 12px 12px 0;font-family:"Libre Baskerville",Georgia,serif;font-size:21px;line-height:1.4;max-width:860px}
+.pull cite{display:block;margin-top:10px;font-family:Inter,sans-serif;font-style:normal;font-size:13.5px;color:var(--muted)}
+.gap{margin-top:30px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+
+/* tabs (before / after) */
+.tabs{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:16px;gap:4px;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;font:600 14px Inter,sans-serif;color:var(--ink-2);padding:9px 16px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.tabpane{display:none}
+.tabpane.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:.2}to{opacity:1}}
+
+/* concept gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gallery figure{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+.gallery img{width:100%;height:auto;aspect-ratio:3/4.4;object-fit:cover;cursor:zoom-in}
+.gallery .tag{position:absolute;left:10px;top:10px;background:rgba(20,35,29,.82);color:#fff;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px}
+.gallery .pick{background:var(--gold);color:var(--ink)}
+
+/* architecture */
+.arch{margin-top:46px;display:grid;grid-template-columns:minmax(0,.9fr) 56px minmax(0,1.75fr) 56px minmax(0,1.1fr);gap:0;align-items:stretch;position:relative}
+.zone{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;background:rgba(255,255,255,.03);position:relative}
+.zone h4{font:600 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2);margin-bottom:14px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.zone.server{background:linear-gradient(180deg,rgba(47,107,82,.28),rgba(47,107,82,.08));border-color:rgba(212,179,122,.35)}
+.link{position:relative;align-self:center;height:2px;margin:0 -2px}
+.arch-cols{display:contents}
+.node{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 13px;margin-top:10px;transition:border-color .25s,background .25s,box-shadow .25s,transform .25s}
+.node:first-of-type{margin-top:0}
+.node .ic{flex:0 0 40px;height:40px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;gap:3px;padding:6px}
+.node .ic img{max-width:100%;max-height:100%;object-fit:contain}
+.node .ic.pair{flex-basis:64px}
+.node .ic.pair img{max-width:24px}
+.node .ic.dark-ic{background:#211c52}
+.node b{display:block;font-size:14.5px;color:#fff;font-weight:600;line-height:1.3}
+.node span{display:block;font-size:13px;color:#b9c4bf;line-height:1.45;margin-top:3px}
+.node .price,.zone h4 .price{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:700;font-style:normal;color:var(--ink);background:var(--brass-2);border-radius:999px;padding:2px 9px;letter-spacing:.02em;white-space:nowrap;text-transform:none}
+.zone h4 .price{margin-top:0}
+.node.on{border-color:var(--gold);background:rgba(232,181,77,.14);box-shadow:0 0 0 3px rgba(232,181,77,.18),0 10px 30px -12px rgba(232,181,77,.5);transform:translateY(-1px)}
+.flowline{position:absolute;pointer-events:none;inset:0;z-index:0}
+.arch>.zone{z-index:1}
+.connector{display:flex;align-items:center;justify-content:center;position:relative;min-width:48px}
+.connector .pipe{width:100%;height:3px;border-radius:3px;background:repeating-linear-gradient(90deg,var(--brass-2) 0 10px,transparent 10px 18px);background-size:18px 3px;animation:pipe 1s linear infinite;opacity:.8}
+.connector .lbl{position:absolute;top:calc(50% + 10px);font-size:11px;color:#9fb0a8;white-space:nowrap}
+@keyframes pipe{to{background-position:18px 0}}
+.server-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.server-grid .node{margin-top:0}
+.server-grid .wide{grid-column:1/-1}
+.stepper{margin-top:40px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px 24px}
+.stepper .top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.stepper .top b{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:21px;color:#fff}
+.dots{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dots button{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#cfd8d3;font:600 13px Inter,sans-serif;cursor:pointer}
+.dots button.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.dots .play{width:auto;border-radius:999px;padding:0 14px}
+.stepbody{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;min-height:92px}
+.stepbody .n{font-family:"Libre Baskerville",Georgia,serif;font-size:44px;line-height:1;color:var(--gold)}
+.stepbody h5{font-size:17px;color:#fff;margin-bottom:5px;font-weight:600}
+.stepbody p{font-size:15.5px;margin:0;color:#c9d1cc}
+.stepbody .why{margin-top:8px;font-size:14px;color:var(--brass-2)}
+.progress{height:3px;background:rgba(255,255,255,.1);border-radius:3px;margin-top:16px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--gold)}
+.costs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.cost{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px}
+.cost b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:26px;color:#fff}
+.cost span{font-size:13.5px;color:#b9c4bf}
+
+/* schedule */
+.sched{margin-top:36px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;overflow-x:auto}
+.sched svg{min-width:760px;width:100%;height:auto;display:block}
+
+/* repair loop */
+.loopwrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:30px}
+.loop svg{width:100%;height:auto;max-width:520px;margin:0 auto;display:block}
+.rules{display:grid;gap:12px}
+.rule{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.rule b{display:block;font-size:15px;margin-bottom:3px}
+.rule span{font-size:14.5px;color:var(--ink-2)}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.num{border-top:2px solid var(--brass-2);padding-top:14px}
+.num b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1}
+.num span{display:block;margin-top:8px;font-size:14px;color:var(--ink-2)}
+
+/* models table */
+.tbl{overflow-x:auto;margin-top:26px;border:1px solid var(--line);border-radius:12px;background:var(--white)}
+.tbl table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px}
+.tbl th,.tbl td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;background:#fbfaf7}
+.tbl tr:last-child td{border-bottom:0}
+
+/* timeline */
+.tl{position:relative;margin-top:30px;padding-left:28px}
+.tl:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 22px 14px}
+.tl li:before{content:"";position:absolute;left:-27px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--brass)}
+.tl li.key:before{background:var(--gold);border-color:var(--gold)}
+.tl time{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-2)}
+.tl p{margin-top:2px;color:var(--ink-2);font-size:15.5px}
+
+/* firms */
+.map{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+.map div{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.map b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.map p{font-size:15.5px;color:var(--ink)}
+.map p i{color:var(--green-2);font-style:normal;font-weight:600}
+.syslogos{display:flex;flex-wrap:wrap;gap:26px;align-items:center;margin-top:28px;opacity:.85}
+.syslogos img{height:24px;width:auto}
+
+/* cta */
+.cta{text-align:left}
+.cta .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+
+/* sources */
+.sources{font-size:14px;color:var(--ink-2)}
+.sources li{margin:6px 0 0 18px}
+
+footer{padding:34px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,18,15,.92);z-index:100;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:40px 20px}
+.lb.on{display:flex}
+.lb img{max-width:min(1600px,100%);height:auto;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:zoom-out}
+.lb .x{position:fixed;top:14px;right:18px;color:#fff;font-size:30px;background:none;border:0;cursor:pointer;line-height:1}
+
+/* video (hidden until recorded) */
+.video{aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;margin-top:26px}
+.video iframe{width:100%;height:100%;border:0}
+
+@media (max-width:980px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .charts{grid-template-columns:1fr}
+  .trio{grid-template-columns:1fr}
+  .arch{grid-template-columns:1fr;gap:0}
+  .connector{min-height:44px;min-width:0}
+  .connector .pipe{width:3px;height:40px;background:repeating-linear-gradient(180deg,var(--brass-2) 0 10px,transparent 10px 18px);background-size:3px 18px;animation:pipev 1s linear infinite}
+  .connector .lbl{top:auto;left:calc(50% + 12px)}
+  .costs{grid-template-columns:1fr 1fr}
+  .loopwrap{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr 1fr}
+  .map{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+}
+@keyframes pipev{to{background-position:0 18px}}
+@media (max-width:700px){
+  .wrap{padding:0 16px}
+  section,.chap{padding:64px 0}
+  .nav ul{display:none}
+  .nav .btn{padding:9px 14px;font-size:14px}
+  .hero{padding:48px 0 24px}
+  .kpis{grid-template-columns:1fr;gap:12px}
+  .chap-head{grid-template-columns:1fr;gap:6px}
+  .chap-num{font-size:46px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery figure:last-child{grid-column:1/-1}
+  .server-grid{grid-template-columns:1fr}
+  .costs{grid-template-columns:1fr}
+  .stepbody{grid-template-columns:1fr}
+  .dots button{width:30px;height:30px}
+  .pull{font-size:18px}
+
+  html{scroll-padding-top:124px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+ <a class="logo" href="../../"><img src="../../keel-mark.svg" width="32" height="32" alt="">Keelwater</a>
+ <ul><li><a href="../../#for-firms">For Firms</a></li><li><a href="../../#founder">About</a></li><li><a href="../../investors.html">Investors</a></li></ul>
+ <a class="btn btn-primary" href="mailto:hello@keelwater.com?subject=AI%20Capacity%20Assessment">Talk to Brooks</a>
+</div></header>
+
+<nav class="chapnav" aria-label="Case study sections"><div class="wrap">
+ <a href="#results">Results</a>
+ <a href="#first-reply">1 First reply</a>
+ <a href="#pictures">2 Pictures</a>
+ <a href="#quotes">3 Quotes</a>
+ <a href="#database">4 Quote database</a>
+ <a href="#drafts">5 Replies written</a>
+ <a href="#nothing-slips">6 Nothing slips</a>
+ <a href="#calls">7 The call</a>
+ <a href="#data">8 More data</a>
+ <a href="#clean">9 Clean pipeline</a>
+ <a href="#handoff">10 Handoff</a>
+ <a href="#no-api">How it runs</a>
+ <a href="#repair">Repairs</a>
+ <a href="#firms">For firms</a>
+</div></nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top"><div class="wrap">
+ <div class="eyebrow">Case study &middot; The sales enablement project &middot; Feb to Sep 2026</div>
+ <h1>From 13th of 15 reps to <em>#1 of 17</em>, while a 10-hour sales day shrank to 4 to 8 hours.</h1>
+ <p class="lede">Brooks Golden built an AI system around a CRM his seat had no API access to. It answered leads in minutes, drew the customer's product before they asked, filled in the quotes, reminded him to call, kept the pipeline clean and handed every sale to production. This page walks through each piece, inside the CRM, with the numbers behind it.</p>
+ <div class="who"><img src="../../brooks.jpg" alt="Brooks Golden">Built and run by Brooks Golden, founder of Keelwater, while working as a product specialist on a made-to-order sales team (branded inflatables).</div>
+
+ <div class="kpis">
+  <div class="kpi"><div class="big">#1 <span class="arrow">of</span> 17</div><div class="lab">Close rate for the year: <b>20.5%</b>, the first rep to average over 20%. Company-wide: 10.6%.</div><div class="src">Company leaderboard, Jan 1 to Sep 30</div></div>
+  <div class="kpi"><div class="big"><span class="from">24 hrs</span><span class="arrow">&rarr;</span>35 min</div><div class="lab">Median time from a web inquiry to the first reply, February vs July.</div><div class="src">Web-form leads with exact timestamps</div></div>
+  <div class="kpi"><div class="big"><span class="from">37%</span><span class="arrow">&rarr;</span>59%</div><div class="lab">Share of first replies that got an answer from the customer, February to April vs July.</div><div class="src">Work mailbox, 5,730 messages</div></div>
+  <div class="kpi"><div class="big"><span class="from">10 hrs</span><span class="arrow">&rarr;</span>4-8</div><div class="lab">Length of a busy-season workday, before and after the system.</div><div class="src">Brooks's estimate</div></div>
+ </div>
+
+ <figure class="board">
+  <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Company sales leaderboard</b><span class="crumb">&middot; Account executives &middot; Jan 1 to Sep 30, 2026</span></div>
+  <img src="assets/leaderboard.webp" width="2122" height="1358" alt="Company sales leaderboard with Brooks Golden ranked number 1 of 17 reps at a 20.5 percent close rate, above a company average of 10.6 percent" loading="eager"></div>
+  <figcaption><b>The year-to-date leaderboard, captured in mid-September.</b> Other reps' names, sales scores and gross-profit columns are blurred. At the end of June he was the only rep in the company averaging over 20% (20.3%, February to June), the first to get there.</figcaption>
+ </figure>
+</div></section>
+
+<!-- VIDEO: remove the hidden attribute and paste the embed when the walkthrough is recorded -->
+<section id="video" class="alt" hidden><div class="wrap">
+ <div class="eyebrow">Walkthrough</div>
+ <h2>Watch it inside the CRM</h2>
+ <div class="video"><!-- embed iframe here --></div>
+</div></section>
+
+<!-- BEFORE / RESULTS -->
+<section class="alt" id="results"><div class="wrap">
+ <div class="split">
+  <div>
+   <div class="eyebrow">The baseline</div>
+   <h2>February: 13th of 15, and the day ran 10 hours</h2>
+   <p>The job: every inquiry needs a fast, specific reply, a picture of what the customer would be buying, a quote, follow-up until they answer, a phone call, and a clean handoff once they buy. In February, every one of those steps was typed by hand in the CRM, 1 deal at a time, across roughly 100 new leads a month.</p>
+   <p>The rep seat had no API access. So the system could not be a simple integration. It had to use the CRM the way a person does: through the screen.</p>
+  </div>
+  <div>
+   <div class="eyebrow">The result</div>
+   <h2>Close rate more than doubled</h2>
+   <p>From 10.5% in February to 23.0% in April, the first full month with the system, when he went from 13th to 1st. He stayed at or near the top through the summer, while replying faster, sending 4 times as many emails, and working fewer hours.</p>
+   <p class="muted" style="font-size:14.5px">Close rate is the company's own measure: orders from new customers divided by new leads.</p>
+  </div>
+ </div>
+ <div class="charts">
+  <div class="chart" id="c-close"><h4>Monthly close rate</h4><div class="sub">Orders from new leads &divide; new leads</div><svg id="svg-close" viewBox="0 0 560 300" role="img" aria-label="Monthly close rate: February 10.5 percent, March 17.1, April 23.0, May 23.4, June 25.8, July 24.1, August 22.5"></svg><div class="tip"></div></div>
+  <div class="chart" id="c-speed"><h4>Median time to the first reply</h4><div class="sub">From web inquiry to first email, by month</div><svg id="svg-speed" viewBox="0 0 460 300" role="img" aria-label="Median time to first reply: February 24 hours, March 26 hours, April 33 hours, May 20 hours, June 3 hours, July 35 minutes"></svg><div class="tip"></div></div>
+ </div>
+</div></section>
+
+<!-- CHAPTER 1 -->
+<section class="chap" id="first-reply"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">01</div><div><div class="eyebrow">Respond</div><h2>The first reply, in minutes, about their project</h2><p class="lede">Speed wins custom work. The system read each inquiry the moment it landed and wrote a reply about the customer's actual project, not a template.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>Every inquiry waited for Brooks to open it, read the form, look at the reference photo and write back. Overnight and weekend leads waited longest. Median wait in February: 24 hours.</p></div>
+  <div><h5>What the system does</h5><p>A sweep checks for new leads every minute from 7:30 am to 9 pm on weekdays. It reads the form, the photo and the deadline, drafts a specific reply, releases overnight leads at 8 am, and reloads the deal to confirm the email really went.</p></div>
+  <div><h5>Result</h5><p>Median wait fell to 35 minutes by July, and 60% of July's inquiries got a reply inside an hour. Customers answered 59% of first replies, up from 37%.</p></div>
+ </div>
+ <div class="chips"><span class="chip">1,136 first replies written</span><span class="chip">60% answered within an hour</span><span class="chip brass">Replied within a day: 27% closed. After 3 days: 17%</span></div>
+ <figure>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; History &rsaquo; Emails</span></div>
+  <img src="assets/lp-first-response.webp" width="2400" height="1600" alt="Pipedrive deal history showing the system's first reply, the customer's reply thanking Brooks for getting back so quickly, the quote email with 3 concept images and the customer picking concept number 3" loading="lazy"></div>
+  <figcaption><b>A real deal, read from the bottom up.</b> The inquiry came in at 8:40 am. The system's reply went out at 9:21. That afternoon: &ldquo;Thanks for getting back so quickly Brooks.&rdquo; The next email carried 3 concepts of the product; the customer picked #3 the next morning and said yes to the order 6 days after the first reply. Customer details blurred.</figcaption>
+ </figure>
+ <blockquote class="pull">&ldquo;Frequently they would say, wow, thank you for getting back to me so quickly. It was so good they didn't even know it was AI.&rdquo;<cite>Brooks Golden</cite></blockquote>
+</div></section>
+
+<!-- CHAPTER 2 -->
+<section class="chap alt" id="pictures"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">02</div><div><div class="eyebrow">Show</div><h2>A picture of what they're buying, before they ask</h2><p class="lede">&ldquo;How are you going to buy an inflatable if you don't know what it looks like?&rdquo; Every quote email carried 3 concepts of the customer's own product, drawn from their form and reference photo.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>Describe it in words, or wait days for a designer's mock-up. Deals stalled while the customer tried to picture it.</p></div>
+  <div><h5>What the system does</h5><p>Generates 3 concepts per quote with image models, embeds them in the quote email, and links real photos of similar past projects from a 31-category photo catalog.</p></div>
+  <div><h5>Result</h5><p>The conversation moves from what it might look like to which one they want. Customers pick a concept by number and ask for the price, as in both deals on this page.</p></div>
+ </div>
+ <figure>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal history &rsaquo; the quote email, opened</span></div>
+  <div class="tall-scroll"><img src="assets/lp-concepts-email.webp" width="2400" height="2667" alt="The quote email opened inside the Pipedrive deal history, showing the first of 3 concept images of a light-up puzzle-piece Christmas tree on a parade float" loading="lazy"></div></div>
+  <figcaption><b>The email as the customer got it, opened inside the deal.</b> A light-up puzzle-piece Christmas tree for an inclusive holiday parade float.</figcaption>
+ </figure>
+ <div class="gallery gap">
+  <figure><img src="assets/concept-1.jpg" width="768" height="1376" alt="Concept 1: puzzle-piece tree with a bear face and star topper" loading="lazy"><span class="tag">Concept 1</span></figure>
+  <figure><img src="assets/concept-2.jpg" width="848" height="1264" alt="Concept 2: glowing puzzle-piece tree on a trailer" loading="lazy"><span class="tag">Concept 2</span></figure>
+  <figure><img src="assets/concept-3.jpg" width="768" height="1376" alt="Concept 3: bright puzzle-piece tree with a wheelchair ramp on the trailer" loading="lazy"><span class="tag pick">Concept 3 &middot; her pick</span></figure>
+ </div>
+ <figure class="gap">
+  <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; Emails</span></div>
+  <img src="assets/lp-concepts-thread.webp" width="2400" height="1967" alt="Pipedrive email history: the concepts email, then the customer writing that she absolutely loves all of them and the 3rd is her favourite, then a quote for concept 3 the same day" loading="lazy"></div>
+  <figcaption><b>Her answer:</b> &ldquo;I absolutely love all of them&hellip; the 3rd one is my favourite.&rdquo; A quote for concept #3 went out the same day. Concept 3 even shows the wheelchair access her form asked for.</figcaption>
+ </figure>
+</div></section>
+
+<!-- CHAPTER 3 -->
+<section class="chap" id="quotes"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">03</div><div><div class="eyebrow">Quote</div><h2>Quotes without the line-by-line</h2><p class="lede">The CRM had an Auto Quote panel: pick a format and it drops a blank quote template into the deal's history. Then someone had to fill in every line. The system fills it.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>After each call, 10 to 15 minutes per quote (Brooks's estimate): remember the call, type product, size, material, prices, add-ons and discount into the template, line by line.</p></div>
+  <div><h5>What the system does</h5><p>Starts from the call transcript, the form and the pricing rules. Picks standard or options, fills the same template, attaches the reference image, and publishes a quote page with its own link.</p></div>
+  <div><h5>Result</h5><p>Quotes can go out the same day as the call, priced by the same rules every time. The automation alone published 328 quote pages from June 3 to September 18.</p></div>
+ </div>
+ <div class="tabs" role="tablist" data-tabs="q">
+  <button class="on" role="tab" data-pane="q1">1. Pick a format</button>
+  <button role="tab" data-pane="q2">2. The blank template</button>
+  <button role="tab" data-pane="q3">Before: filled by hand</button>
+  <button role="tab" data-pane="q4">After: filled by the system</button>
+  <button role="tab" data-pane="q5">The quote page</button>
+ </div>
+ <div class="tabpane on" id="q1"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal sidebar &rsaquo; Auto Quote &rsaquo; Quote Actions</span></div><img src="assets/lp-quote-actions.webp" width="2400" height="1600" alt="Pipedrive deal sidebar with the Auto Quote section open and the Quote Actions dropdown showing None, Standard Quote Format, Options Quote Format and Generate quote" loading="lazy"></div><figcaption><b>The Auto Quote section of the sidebar.</b> Quote Actions offers a standard or an options format.</figcaption></figure></div>
+ <div class="tabpane" id="q2"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; History &rsaquo; Notes</span></div><img src="assets/lp-quote-template-feed.webp" width="2400" height="1600" alt="Pipedrive history feed with a new CI Standard Quote template note at the top after choosing Standard Quote Format" loading="lazy"></div><figcaption><b>Seconds later, a blank quote template lands in the history feed.</b> Generated for this page, then deleted.</figcaption></figure></div>
+ <div class="tabpane" id="q3"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; the quote note, open in the editor</span></div><div class="tall-scroll"><img src="assets/lp-quote-old-standard.webp" width="2400" height="2500" alt="The blank standard quote template open in the Pipedrive note editor with empty description, size, quantity and price fields" loading="lazy"></div></div><figcaption><b>The old way.</b> Description, size, material, type, quantity, unit price, add-ons, discount: every line typed by hand. The options format has a whole price grid to fill. &ldquo;You should have seen having to fill out the old way, line by line.&rdquo;</figcaption></figure></div>
+ <div class="tabpane" id="q4"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; the quote note, open in the editor</span></div><div class="tall-scroll"><img src="assets/lp-quote-new.webp" width="2400" height="2500" alt="The same quote template filled in by the system: product name, specs, 3 size options with prices, add-ons and production time" loading="lazy"></div></div><figcaption><b>The new way, same deal, same template.</b> Product, specs, 3 sizes priced from the rules, add-ons and production time, filled by the system from the call and the form.</figcaption></figure></div>
+ <div class="tabpane" id="q5"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Quote page</b><span class="crumb">&middot; the link the customer receives</span></div><div class="tall-scroll"><img src="assets/lp-quote-page.webp" width="2400" height="2500" alt="A customer-facing quote page with the product image, size options with prices, add-ons and the 4-step process" loading="lazy"></div></div><figcaption><b>What the customer opens.</b> A clean page they can forward to whoever signs off. Brand, customer and logos blurred.</figcaption></figure></div>
+</div></section>
+
+<!-- CHAPTER 4 -->
+<section class="chap alt" id="database"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">04</div><div><div class="eyebrow">Quote</div><h2>Every quote in 1 searchable database</h2><p class="lede">Every quote page lands in 1 index: date, rep, customer, type, line items, materials and deal number. When a customer asks for the same thing as a past order, the answer is a search away.</p></div></div>
+ <div class="chips"><span class="chip">662 quotes, June 3 to September 18</span><span class="chip">328 written by the automation</span><span class="chip brass">269 by a second rep using a packaged copy of the tool</span></div>
+ <div class="tabs" data-tabs="d">
+  <button class="on" data-pane="d1">The index</button>
+  <button data-pane="d2">Search: &ldquo;arch&rdquo;</button>
+ </div>
+ <div class="tabpane on" id="d1"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Client quotes</b><span class="crumb">&middot; 662 quotes, newest first</span></div><img src="assets/lp-quote-database.webp" width="2400" height="1500" alt="The client quotes index listing date, salesperson, quote type, line items, materials and deal number, with customer names blurred" loading="lazy"></div><figcaption><b>Shown at full width, nothing cut off.</b> Customer and contact names blurred.</figcaption></figure></div>
+ <div class="tabpane" id="d2"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Client quotes</b><span class="crumb">&middot; search &ldquo;arch&rdquo; &middot; 51 of 662</span></div><img src="assets/lp-quote-database-search.webp" width="2400" height="1500" alt="The quote index filtered to 51 arch quotes" loading="lazy"></div><figcaption><b>Every arch ever quoted, in 1 search:</b> sizes, materials and what was offered, for consistent pricing on the next one.</figcaption></figure></div>
+ <p class="gap" style="max-width:820px">The tool spread: it was packaged for a second salesperson, who produced 269 quote pages with it between June and September. When another rep adopts a tool, that is the clearest sign it was worth building.</p>
+</div></section>
+
+<!-- CHAPTER 5 -->
+<section class="chap" id="drafts"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">05</div><div><div class="eyebrow">Respond</div><h2>Open the deal, and the reply is already written</h2><p class="lede">When a customer wrote back, the system read the whole deal, every email, call and quote, and saved a draft reply in the CRM for Brooks to check and send.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>Reread the thread, remember what was said on the call, find the quote, then write. With dozens of conversations open at once, replies slipped.</p></div>
+  <div><h5>What the system does</h5><p>Drafts the reply inside the deal with the full history in view, and knows which concept they picked or what they complained about. Brooks reviews before anything sends.</p></div>
+  <div><h5>Result</h5><p>Over 1,000 reply drafts from May to September. From late July, every customer email was also tracked against a 20-hour answer deadline.</p></div>
+ </div>
+ <div class="tabs" data-tabs="r">
+  <button class="on" data-pane="r1">The email editor</button>
+  <button data-pane="r2">Drafts waiting on a deal</button>
+ </div>
+ <div class="tabpane on" id="r1"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; Email editor &middot; captured by the system on May 18</span></div><img src="assets/lp-email-editor.webp" width="1418" height="802" alt="Pipedrive email editor on a deal with a fully written draft about branded ring-tube pool floats, a link to similar past projects and concept images below, saved and ready to send" loading="lazy"></div><figcaption><b>The email editor inside the deal, written and saved.</b> &ldquo;The kind of activation people actually pull out their phones for and tag you in.&rdquo; Brooks reads it and hits Send. The system took this screenshot itself while checking its own work.</figcaption></figure></div>
+ <div class="tabpane" id="r2"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; Focus</span></div><img src="assets/lp-drafts.webp" width="2400" height="1600" alt="Pipedrive deal Focus section with 2 drafts waiting: a quote email and a reply that references the customer's bad experience with another company" loading="lazy"></div><figcaption><b>2 drafts pinned to the top of a deal.</b> The second answers the customer's message and remembers what he said: &ldquo;especially after that last experience with the other company.&rdquo;</figcaption></figure></div>
+</div></section>
+
+<!-- CHAPTER 6 -->
+<section class="chap alt" id="nothing-slips"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">06</div><div><div class="eyebrow">Follow up</div><h2>Nothing slips through the cracks</h2><p class="lede">Deals die in the middle. Every stage ran on a follow-up cadence, and watchdogs checked every deal for a next step and every customer email for an answer.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>Follow-up from memory. A quiet deal surfaced weeks later, if at all.</p></div>
+  <div><h5>What the system does</h5><p>Stage-based follow-ups at set intervals, sent on weekdays in the hours people reply, stopped the moment the customer answers. A watchdog flags any open deal with no next step. Quiet deals get a genuinely new idea, not a bump.</p></div>
+  <div><h5>Result</h5><p>1,509 follow-ups scheduled from April to September: 460 sent automatically and 875 drafted for Brooks to approve.</p></div>
+ </div>
+ <div class="tabs" data-tabs="n">
+  <button class="on" data-pane="n1">Follow-ups that close</button>
+  <button data-pane="n2">A cold deal, revived</button>
+  <button data-pane="n3">The watchdog</button>
+ </div>
+ <div class="tabpane on" id="n1"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; Emails</span></div><div class="tall-scroll"><img src="assets/lp-followups.webp" width="2400" height="2333" alt="Pipedrive email history with a day-5 follow-up, a day-12 follow-up asking whether the one-unit price worked, and the deposit link a week later" loading="lazy"></div></div><figcaption><b>Read from the bottom.</b> Day 5: a check-in on the quote. Day 12: a real question (&ldquo;was the 1-unit pricing workable, or would it help to price a few changes?&rdquo;). The customer came back, and the deposit link went out on July 2. Won July 6.</figcaption></figure></div>
+ <div class="tabpane" id="n2"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; Emails</span></div><img src="assets/lp-reengage.webp" width="2400" height="1833" alt="Pipedrive email history: after the deal went quiet the system sent a new design idea, the customer replied Yes THAT is what I'm looking for, and a quote followed the next day" loading="lazy"></div><figcaption><b>The deal had gone quiet and was marked lost.</b> The system flagged it and drafted a new design idea instead of another bump. &ldquo;Yes THAT is what I'm looking for!&rdquo; Quote the next day, won in August.</figcaption></figure></div>
+ <div class="tabpane" id="n3"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; Focus</span></div><img src="assets/lp-watchdog.webp" width="2400" height="1600" alt="Pipedrive activity titled Deal Missing Activity Reminder: deal open without activities, please review and check next steps" loading="lazy"></div><figcaption><b>An open deal with no next step gets an activity:</b> &ldquo;Deal open without activities, please review and check next steps.&rdquo; A second watchdog checked the system's own promises every 15 minutes, such as every customer email getting a reply draft.</figcaption></figure></div>
+</div></section>
+
+<!-- CHAPTER 7 -->
+<section class="chap" id="calls"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">07</div><div><div class="eyebrow">Relationship</div><h2>The reminder to pick up the phone</h2><p class="lede">&ldquo;What builds relationships? Actually getting on the phone with the customer.&rdquo; Email closes sales; calls build relationships. So the system made sure the call happened.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>Calls got crowded out by admin. The easy path was 1 more email.</p></div>
+  <div><h5>What the system does</h5><p>24 hours after a new lead, if the customer had not replied, it writes a note on the deal: call or text them, with the text already written, and labels the deal so it stands out.</p></div>
+  <div><h5>Result</h5><p>78 call reminders from July to September. 92 more were skipped because the customer had already replied.</p></div>
+ </div>
+ <figure>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; History &rsaquo; All</span></div>
+  <div class="tall-scroll"><img src="assets/lp-call-reminder.webp" width="2400" height="2083" alt="Pipedrive deal history: a note telling Brooks to call or text the prospect with the text written, followed the next day by 2 outgoing calls and a text message" loading="lazy"></div></div>
+  <figcaption><b>July 13:</b> the note, with the text ready to send. <b>July 14:</b> 2 calls and a text from Brooks. This deal later went quiet, was revived by the new-design email in chapter 6, and closed in August.</figcaption>
+ </figure>
+ <blockquote class="pull">&ldquo;There are a number of deals I closed just through email. You don't really build a relationship; you're just making a sale. Having automations that remind the account executive to get on the phone is powerful.&rdquo;<cite>Brooks Golden</cite></blockquote>
+</div></section>
+
+<!-- CHAPTER 8 -->
+<section class="chap alt" id="data"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">08</div><div><div class="eyebrow">Know the customer</div><h2>More data on every deal, without typing it</h2><p class="lede">Calls were transcribed into the deal, companies were researched before the first call, and a running project summary kept every later step working from the same facts.</p></div></div>
+ <div class="chips"><span class="chip">246 calls transcribed, 24.8 hours of audio</span><span class="chip">2,382 deal summaries written</span><span class="chip brass">Research brief on the deal before the first call</span></div>
+ <div class="tabs" data-tabs="m">
+  <button class="on" data-pane="m1">Call transcript</button>
+  <button data-pane="m2">Research brief</button>
+ </div>
+ <div class="tabpane on" id="m1"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; the transcript note, open in the editor</span></div><div class="tall-scroll"><img src="assets/lp-transcript.webp" width="2400" height="2500" alt="A 14-minute call transcribed word for word into a Pipedrive note, with time stamps" loading="lazy"></div></div><figcaption><b>A 14-minute discovery call, word for word, time-stamped on the deal,</b> so every later draft, quote and handoff card works from what the customer actually said. Names blurred.</figcaption></figure></div>
+ <div class="tabpane" id="m2"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; Notes</span></div><img src="assets/lp-research-brief.webp" width="2400" height="1600" alt="Pipedrive note with an AI-written research brief on the customer's company" loading="lazy"></div><figcaption><b>Who they are, what they do and what they are likely to need,</b> researched and written to the deal before Brooks picked up the phone.</figcaption></figure></div>
+</div></section>
+
+<!-- CHAPTER 9 -->
+<section class="chap" id="clean"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">09</div><div><div class="eyebrow">Follow up</div><h2>A pipeline that stays clean on its own</h2><p class="lede">A clean pipeline is one you can trust at a glance: every open deal real, every date believable, every stalled deal either revived or closed out politely.</p></div></div>
+ <div class="nums" style="margin-top:0">
+  <div class="num"><b>297</b><span>stalled deals reviewed by the system, May to September</span></div>
+  <div class="num"><b>157</b><span>closed out with a final, friendly email before being marked lost</span></div>
+  <div class="num"><b>93</b><span>given a re-engagement draft instead</span></div>
+  <div class="num"><b>47</b><span>flagged for Brooks to decide</span></div>
+ </div>
+ <div class="trio gap">
+  <div><h5>Close dates that mean something</h5><p>Every weekday hour, a sweep moved expected close dates that had slipped past, so the forecast stayed honest.</p></div>
+  <div><h5>Overdue work rolled forward</h5><p>Activities left overdue were rolled to the next working slot instead of piling up red.</p></div>
+  <div><h5>Labels that say who owes what</h5><p>Hammocks: a draft is waiting on Brooks. Football: Brooks owes the customer an answer. Deadline flags for rush orders.</p></div>
+ </div>
+</div></section>
+
+<!-- CHAPTER 10 -->
+<section class="chap alt" id="handoff"><div class="wrap">
+ <div class="chap-head"><div class="chap-num">10</div><div><div class="eyebrow">Hand off</div><h2>The handoff to customer service and production</h2><p class="lede">When a deal closed, the people building it needed everything: what was sold, the size, the material, the deadline, and every decision made along the way. The system wrote it into the Asana card for them.</p></div></div>
+ <div class="trio">
+  <div class="before"><h5>Before</h5><p>Rewrite the deal from memory for the production card, then again for the customer's handoff email.</p></div>
+  <div><h5>What the system does</h5><p>Keeps 1 Project Vision &amp; Summary note on every deal, the Asana card, updated from the emails, calls, quote and chosen concept. On payment, a handoff email goes out with a shipping estimate.</p></div>
+  <div><h5>Result</h5><p>Production starts from the customer's actual decisions, like &ldquo;use AI design #3&rdquo;. 266 handoff emails drafted.</p></div>
+ </div>
+ <div class="tabs" data-tabs="h">
+  <button class="on" data-pane="h1">The Asana card, in the editor</button>
+  <button data-pane="h2">Where it lives on the deal</button>
+ </div>
+ <div class="tabpane on" id="h1"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; History &rsaquo; Project Vision &amp; Summary, open in the editor</span></div><div class="tall-scroll"><img src="assets/lp-asana-card.webp" width="2400" height="2500" alt="The Project Vision and Summary note open in the Pipedrive editor, highlighted: project summary, intended use, product specs, criticals including use AI design number 3, and deadline information" loading="lazy"></div></div><figcaption><b>The Asana card, highlighted.</b> Project summary, specs, deadline and the criticals production must not miss: &ldquo;Use selected AI design #3 and faithfully replicate the Gentle Doctor statue&hellip; Include purchased battery-powered internal LED lighting and custom carry bag with wheels.&rdquo; Opened in the editor for this page, then closed without changes.</figcaption></figure></div>
+ <div class="tabpane" id="h2"><figure><div class="frame"><div class="bar"><i></i><i></i><i></i><b>Pipedrive</b><span class="crumb">&middot; Deal page &middot; History &rsaquo; Notes</span></div><img src="assets/lp-asana-in-feed.webp" width="2400" height="1600" alt="Pipedrive history with the Project Vision and Summary note highlighted among the quote notes" loading="lazy"></div><figcaption><b>Where the handoff sits:</b> 1 note on the deal, next to the quote notes and the research brief, kept current until the order ships.</figcaption></figure></div>
+</div></section>
+
+<!-- HOW IT RUNS -->
+<section class="dark" id="no-api"><div class="wrap">
+ <div class="eyebrow">Under the hood</div>
+ <h2>How it runs with no API</h2>
+ <p class="lede">Without API access, the only way in was the screen. So the system got its own computer in the cloud, its own browser logged into the CRM, and a schedule. Every job uses the CRM the way a person would, then reloads the deal to prove the work landed.</p>
+
+ <div class="arch" id="arch">
+  <div class="zone" data-zone="you">
+   <h4>You</h4>
+   <div class="node" data-n="laptop"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1f4d3a" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="11" rx="1.5"/><path d="M2 19h20"/></svg></div><div><b>Brooks, on any device</b><span>Reviews drafts, sends, calls. Sees the server's browser when a login needs a human.</span></div></div>
+   <div class="node" data-n="tailscale"><div class="ic"><img src="assets/logos/tailscale.svg" alt="Tailscale"></div><div><b>Tailscale</b><span>A private tunnel to the server. Nothing is exposed to the internet.</span><em class="price">Free plan</em></div></div>
+  </div>
+  <div class="connector"><div class="pipe"></div><div class="lbl">private link</div></div>
+  <div class="zone server" data-zone="server">
+   <h4><span>The cloud server</span><em class="price" style="font-style:normal">$25.59 / month</em></h4>
+   <div class="server-grid">
+    <div class="node wide" data-n="hetzner"><div class="ic pair"><img src="assets/logos/hetzner.svg" alt="Hetzner"><img src="assets/logos/ubuntu.svg" alt="Ubuntu"></div><div><b>Hetzner cloud server, Ubuntu</b><span>Always on, running since March 14. Hosts everything below.</span></div></div>
+    <div class="node wide" data-n="browser"><div class="ic pair"><img src="assets/logos/chrome.svg" alt="Chrome"><img src="assets/logos/pipedrive-mark.png" alt="Pipedrive"></div><div><b>1 real browser, logged into the CRM</b><span>Jobs click, type and read like a person. 1 job at a time holds the browser, so they never collide.</span></div></div>
+    <div class="node" data-n="clock"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1f4d3a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>42 scheduled jobs</b><span>Timed to business hours. Weekends quiet.</span></div></div>
+    <div class="node" data-n="board"><div class="ic pair"><img src="assets/logos/paperclip.svg" alt="Paperclip"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"></div><div><b>Repair board</b><span>Every failure becomes a ticket for the AI crew.</span><em class="price">Open source</em></div></div>
+    <div class="node" data-n="claude"><div class="ic"><img src="assets/logos/claude.svg" alt="Claude"></div><div><b>Claude</b><span>Writing, deal summaries, reviews.</span><em class="price">$200 / month flat</em></div></div>
+    <div class="node" data-n="codex"><div class="ic"><img src="assets/logos/openai.svg" alt="OpenAI"></div><div><b>Codex</b><span>Coding, fixes, concept images.</span><em class="price">$200 / month flat</em></div></div>
+    <div class="node wide" data-n="gemini"><div class="ic"><img src="assets/logos/gemini.svg" alt="Gemini"></div><div><b>Gemini</b><span>Concept images and call transcription.</span><em class="price">Pay per use</em></div></div>
+   </div>
+  </div>
+  <div class="connector"><div class="pipe"></div><div class="lbl">reads &amp; writes</div></div>
+  <div class="zone" data-zone="out">
+   <h4>Where the work lands</h4>
+   <div class="node" data-n="pipedrive"><div class="ic dark-ic"><img src="assets/logos/pipedrive-mark.png" alt="Pipedrive"></div><div><b>The CRM</b><span>Drafts, notes, quotes, activities, labels, dates.</span><em class="price">Existing seat</em></div></div>
+   <div class="node" data-n="asana"><div class="ic"><img src="assets/logos/asana.svg" alt="Asana"></div><div><b>Asana</b><span>The production handoff card.</span></div></div>
+   <div class="node" data-n="pages"><div class="ic pair"><img src="assets/logos/cloudflare.svg" alt="Cloudflare"><img src="assets/logos/github.svg" alt="GitHub"></div><div><b>Quote pages</b><span>Published per quote, plus the searchable index.</span><em class="price">Free</em></div></div>
+   <div class="node" data-n="drive"><div class="ic"><img src="assets/logos/google-drive.svg" alt="Google Drive"></div><div><b>Project photos</b><span>31 categories of real past work.</span></div></div>
+   <div class="node" data-n="slack"><div class="ic"><img src="assets/logos/slack.svg" alt="Slack"></div><div><b>Slack</b><span>Only when a human must act.</span></div></div>
+  </div>
+ </div>
+
+ <div class="stepper" id="stepper" aria-live="polite">
+  <div class="top"><b>Follow 1 lead through the system</b><div class="dots" id="dots"></div></div>
+  <div class="stepbody"><div class="n" id="st-n">1</div><div><h5 id="st-h"></h5><p id="st-p"></p><div class="why" id="st-w"></div></div></div>
+  <div class="progress"><i id="st-bar"></i></div>
+ </div>
+
+ <div class="costs">
+  <div class="cost"><b>$25.59</b><span>a month for the cloud server</span></div>
+  <div class="cost"><b>$0</b><span>for the private tunnel, the open-source repair board and the quote hosting</span></div>
+  <div class="cost"><b>9,103</b><span>AI calls from May 11 to Sep 18; on flat monthly plans from June 29</span></div>
+  <div class="cost"><b>0</b><span>API keys needed from the CRM</span></div>
+ </div>
+</div></section>
+
+<!-- SCHEDULE -->
+<section class="alt" id="schedule"><div class="wrap">
+ <div class="eyebrow">Timing</div>
+ <h2>Jobs that run at specific times</h2>
+ <p class="lede">Timing is a feature. New leads are checked every minute during business hours, overnight replies wait for 8 am, follow-up drafts are written at night so they are ready in the morning, and the repair crew works on a fixed cadence so it doesn't burn through AI usage.</p>
+ <div class="sched"><svg id="svg-sched" viewBox="0 0 1100 470" role="img" aria-label="Weekday schedule of the main jobs from 6 am to midnight Eastern time"></svg></div>
+ <p class="muted" style="font-size:13.5px;margin-top:12px">Weekdays, Eastern time. 42 jobs in total; the main ones are shown.</p>
+</div></section>
+
+<!-- REPAIRS -->
+<section id="repair"><div class="wrap">
+ <div class="eyebrow">Reliability</div>
+ <h2>Who fixes it when the screen changes</h2>
+ <p class="lede">Working through a screen is fragile: buttons move, a draft can look saved and not be, 2 jobs can reach for the same browser. The answer was a small AI crew with separate jobs, and 1 rule above all: a task is only done when the result is confirmed on a fresh load of the deal.</p>
+ <div class="loopwrap">
+  <div class="loop"><svg id="svg-loop" viewBox="0 0 520 520" role="img" aria-label="Repair loop: job checks its own work, failure becomes a ticket, QA bot diagnoses and proposes a fix, architect approves or revises, fix deployed, auditor re-checks the live deal"></svg></div>
+  <div class="rules">
+   <div class="rule"><b>The job checks its own work</b><span>Every email, note, activity and card is confirmed on a fresh reload of the deal before the job calls itself done.</span></div>
+   <div class="rule"><b>QA bot: diagnose and propose</b><span>Reads the ticket and the evidence, finds the cause, proposes the smallest fix.</span></div>
+   <div class="rule"><b>Architect: approve or revise</b><span>Reviews the fix, and fixes the whole class of problem when the same failure keeps coming back.</span></div>
+   <div class="rule"><b>Auditor: trust nothing</b><span>Checks the deployed fix against the live deal. &ldquo;Tests passing is not proof. The promise being kept is proof.&rdquo;</span></div>
+   <div class="rule"><b>A budget on thinking</b><span>The crew works 6 am to 8 pm on weekdays, with a daily cap on how often it wakes up, 1 ticket per root cause, and Slack only when a human has to act.</span></div>
+  </div>
+ </div>
+ <div class="nums">
+  <div class="num"><b>14,148</b><span>tickets handled on the repair board, Apr 27 to Sep 18</span></div>
+  <div class="num"><b>99.8%</b><span>closed</span></div>
+  <div class="num"><b>3,205</b><span>code changes, all through Git, each one reversible</span></div>
+  <div class="num"><b>789</b><span>written handoffs and audits explaining what changed and why</span></div>
+ </div>
+ <h3 style="margin-top:56px">Switching between Claude and Codex with 1 command</h3>
+ <p style="max-width:820px;color:var(--ink-2)">Every AI task has a named slot and a tier: routine work on cheaper models, reviews and repairs on the strongest. 3 profiles decide who fills each slot, and 1 command moves the whole fleet. If 1 provider hits a usage limit, work continues on the other; only a dead login pages a human.</p>
+ <div class="tbl"><table>
+  <thead><tr><th>Profile</th><th>Writing &amp; routine checks</th><th>Architecture &amp; repairs</th><th>When it was used</th></tr></thead>
+  <tbody>
+   <tr><td><b>Claude</b></td><td>Claude Sonnet</td><td>Claude Opus</td><td>Default from Aug 20</td></tr>
+   <tr><td><b>Mixed</b></td><td>Claude writes and reviews</td><td>Codex executes</td><td>Balanced load</td></tr>
+   <tr><td><b>Codex</b></td><td>GPT-5.6 Luna</td><td>GPT-5.6 Sol</td><td>Fleet default mid-year; always kept warm as fallback</td></tr>
+  </tbody>
+ </table></div>
+ <p class="muted" style="font-size:13.5px;margin-top:10px">9,103 AI calls: 5,841 on Anthropic models, 3,262 on OpenAI models, plus Google image and transcription models.</p>
+</div></section>
+
+<!-- TIMELINE -->
+<section class="alt" id="timeline"><div class="wrap narrow">
+ <div class="eyebrow">Timeline</div>
+ <h2>7 months, from 1 tool to a system</h2>
+ <ol class="tl">
+  <li class="key"><time>February</time><p>Starts on the sales team. Close rate 10.5%, 13th of 15. Everything by hand.</p></li>
+  <li><time>March</time><p>The first tool: a transcript parser that turns a call into a quote, an email and an image prompt. It saves 10 to 15 minutes per quote and proves the idea.</p></li>
+  <li><time>March 14</time><p>The cloud server goes up. Nothing else works without it.</p></li>
+  <li class="key"><time>April</time><p>The system goes live: first replies, concepts, quotes, follow-ups. Close rate 23.0%, 1st of 19. Calls start being transcribed (April 23); the repair board opens (April 27).</p></li>
+  <li><time>May to June</time><p>1st of 20 in May, 25.8% in June. Every AI call now logged. The searchable quote database opens June 3, and a second salesperson starts quoting with a packaged copy of the tool.</p></li>
+  <li><time>July</time><p>Median first reply: 35 minutes. Call reminders start July 3. Close rate 24.1%.</p></li>
+  <li><time>August</time><p>A dedicated repair agent joins the crew; reply drafts for every inbound email. Close rate 22.5%.</p></li>
+  <li class="key"><time>September 18</time><p>Last day. #1 of 17 for the year at 20.5%. The system was paused, not shut down.</p></li>
+ </ol>
+</div></section>
+
+<!-- FOR FIRMS -->
+<section id="firms"><div class="wrap">
+ <div class="eyebrow">What this means for a tax or CAS firm</div>
+ <h2>Different product, same pattern</h2>
+ <p class="lede">A firm's week has the same shape: inquiries to answer, proposals to price, documents to chase, questions to answer from a long history, and handoffs from the person who sold the work to the people who do it. This is what that looks like with the same approach.</p>
+ <div class="map">
+  <div><b>1 First reply in minutes</b><p>New client inquiries answered <i>the same hour</i> with a reply about their situation, and the discovery call booked.</p></div>
+  <div><b>2 A picture of what they buy</b><p>A clear preview of the deliverable: <i>the engagement scope, the monthly close package, the checklist</i> they will get.</p></div>
+  <div><b>3 Quotes without line-by-line</b><p>Engagement letters and proposals <i>drafted from the call transcript and your pricing rules</i>, ready to review.</p></div>
+  <div><b>4 Every quote in 1 place</b><p>Every proposal searchable, so <i>pricing stays consistent</i> across partners and seasons.</p></div>
+  <div><b>5 Replies already written</b><p>Client emails answered in drafts <i>from the full client history</i>, reviewed by staff before sending.</p></div>
+  <div><b>6 Nothing slips</b><p>Document requests, e-signatures and organizers <i>chased on a cadence</i>, with a watchdog on every deadline.</p></div>
+  <div><b>7 The call</b><p>A prompt to <i>call the client</i> at the moments that build trust, not just another email.</p></div>
+  <div><b>10 The handoff</b><p>Sales to onboarding to production, with <i>every decision already written</i> into your workflow tool.</p></div>
+ </div>
+ <p style="margin-top:34px;max-width:820px;color:var(--ink-2)">And the part that matters most for firms: it does not depend on your software having an API. If a person can do it on the screen, the system can do it on the screen, safely, on a schedule, and prove it did.</p>
+ <div class="syslogos" aria-label="Examples of firm software"><img src="../../taxdome.svg" alt="TaxDome"><img src="../../canopy.svg" alt="Canopy"><img src="../../cchaxcess.svg" alt="CCH Axcess"><img src="../../ultratax.svg" alt="UltraTax"><img src="../../lacerte.svg" alt="Lacerte"><img src="../../proconnect.svg" alt="ProConnect"><img src="../../drake.png" alt="Drake"></div>
+</div></section>
+
+<!-- CTA -->
+<section class="dark cta"><div class="wrap">
+ <div class="eyebrow">Next step</div>
+ <h2 style="max-width:820px">Find the hours hiding in your firm's week</h2>
+ <p class="lede">Keelwater starts with a baseline of where the time goes, then builds the system underneath it and measures the before and after, the same way this project was measured.</p>
+ <div class="actions"><a class="btn btn-primary" style="background:var(--brass-2);color:var(--ink)" href="mailto:hello@keelwater.com?subject=AI%20Capacity%20Assessment">Get an AI Capacity Assessment</a><a class="btn btn-ghost" style="border-color:#c9d1cc;color:#fff" href="mailto:hello@keelwater.com?subject=Design%20Partnership">Discuss a Design Partnership</a></div>
+</div></section>
+
+<!-- SOURCES -->
+<section id="sources" style="padding:56px 0"><div class="wrap narrow">
+ <div class="eyebrow">Sources and method</div>
+ <ul class="sources">
+  <li>Close rates: the company's monthly sales reports (February to August) and its year-to-date leaderboard (January 1 to September 30). Ranks for February to June come from the same reports.</li>
+  <li>Reply speed and reply rates: 5,730 messages from the work mailbox, February to July 2026. Speed is measured on web-form leads with exact submission times.</li>
+  <li>System counts: the server's logs and databases, April to September 2026. AI call counts are completed calls.</li>
+  <li>Hours per day and minutes per quote are Brooks's estimates.</li>
+  <li>Screenshots: taken inside the CRM on September 24, 2026, except the email editor (captured by the system on May 18). Customer names, emails, phone numbers and the company's name are blurred. Quote templates generated for this page were deleted afterwards.</li>
+ </ul>
+</div></section>
+
+</main>
+
+<footer><div class="wrap"><span>&copy; 2026 Keelwater</span><span>Keelwater is not a CPA firm and does not provide attest services.</span></div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged screenshot"><button class="x" aria-label="Close">&times;</button><img alt=""></div>
+
+<script>
+(function(){
+  // lightbox
+  var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+  document.querySelectorAll('.frame img, .gallery img').forEach(function(im){
+    im.addEventListener('click',function(){lbi.src=im.currentSrc||im.src;lbi.alt=im.alt;lb.classList.add('on');lb.scrollTop=0;});
+  });
+  function close(){lb.classList.remove('on');lbi.removeAttribute('src');}
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  // tabs
+  document.querySelectorAll('[data-tabs]').forEach(function(group){
+    var btns=group.querySelectorAll('button');
+    btns.forEach(function(b){b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on');var p=document.getElementById(x.dataset.pane);if(p)p.classList.remove('on');});
+      b.classList.add('on');var p=document.getElementById(b.dataset.pane);if(p)p.classList.add('on');
+    });});
+  });
+
+  // chapter nav highlight
+  var links=[].slice.call(document.querySelectorAll('.chapnav a'));
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var y=window.scrollY+170,idx=-1;
+    targets.forEach(function(t,i){if(t&&t.offsetTop<=y)idx=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===idx);});
+    if(idx>=0){var a=links[idx],bar=a.parentElement;var l=a.offsetLeft-bar.clientWidth/2+a.clientWidth/2;if(Math.abs(bar.scrollLeft-l)>40)bar.scrollTo({left:l,behavior:'smooth'});}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // charts
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function barChart(svgId,data,opt){
+    var svg=document.getElementById(svgId),box=svg.parentElement,tip=box.querySelector('.tip');
+    var W=+svg.getAttribute('viewBox').split(' ')[2],H=300,m={t:26,r:8,b:34,l:40},w=W-m.l-m.r,h=H-m.t-m.b;
+    var max=opt.max,step=w/data.length,bw=Math.min(46,step*0.58);
+    opt.ticks.forEach(function(t){var y=m.t+h-h*t/max;el('line',{x1:m.l,x2:W-m.r,y1:y,y2:y,stroke:'#ece7dc','stroke-width':1},svg);var tx=el('text',{x:m.l-8,y:y+4,'text-anchor':'end','font-size':11,fill:'#8a948f'},svg);tx.textContent=opt.tickFmt(t);});
+    data.forEach(function(d,i){
+      var x=m.l+step*i+(step-bw)/2,bh=Math.max(2,h*d.v/max),y=m.t+h-bh;
+      var r=Math.min(4,bw/2);
+      el('path',{d:'M'+x+','+(m.t+h)+'V'+(y+r)+'Q'+x+','+y+' '+(x+r)+','+y+'H'+(x+bw-r)+'Q'+(x+bw)+','+y+' '+(x+bw)+','+(y+r)+'V'+(m.t+h)+'Z',fill:opt.color(d,i)},svg);
+      var lt=el('text',{x:x+bw/2,y:y-7,'text-anchor':'middle','font-size':12,'font-weight':600,fill:'#14231d'},svg);lt.textContent=d.label;
+      var mt=el('text',{x:x+bw/2,y:H-12,'text-anchor':'middle','font-size':12,fill:'#6b7772'},svg);mt.textContent=d.m;
+      var hit=el('rect',{x:m.l+step*i,y:m.t,width:step,height:h,fill:'transparent','class':'bar-hit'},svg);
+      hit.addEventListener('mouseenter',function(){tip.textContent=d.tip;tip.style.opacity=1;var r=svg.getBoundingClientRect(),br=box.getBoundingClientRect();tip.style.left=((x+bw/2)/W*r.width+(r.left-br.left))+'px';tip.style.top=(y/H*r.height+(r.top-br.top))+'px';});
+      hit.addEventListener('mouseleave',function(){tip.style.opacity=0;});
+    });
+    el('line',{x1:m.l,x2:W-m.r,y1:m.t+h,y2:m.t+h,stroke:'#c9c2b3','stroke-width':1},svg);
+  }
+  barChart('svg-close',[
+    {m:'Feb',v:10.5,label:'10.5%',tip:'February: 10.5% (13th of 15 reps)'},
+    {m:'Mar',v:17.1,label:'17.1%',tip:'March: 17.1% (6th of 19)'},
+    {m:'Apr',v:23.0,label:'23.0%',tip:'April: 23.0% (1st of 19)'},
+    {m:'May',v:23.4,label:'23.4%',tip:'May: 23.4% (1st of 20)'},
+    {m:'Jun',v:25.8,label:'25.8%',tip:'June: 25.8% (2nd of 20)'},
+    {m:'Jul',v:24.1,label:'24.1%',tip:'July: 24.1%'},
+    {m:'Aug',v:22.5,label:'22.5%',tip:'August: 22.5%'}
+  ],{max:30,ticks:[0,10,20,30],tickFmt:function(t){return t+'%';},color:function(){return '#1f4d3a';}});
+  barChart('svg-speed',[
+    {m:'Feb',v:1434,label:'24 h',tip:'February: median 24 hours (1,434 min), 57 leads'},
+    {m:'Mar',v:1533,label:'26 h',tip:'March: median 26 hours, 96 leads'},
+    {m:'Apr',v:2004,label:'33 h',tip:'April: median 33 hours, 51 leads'},
+    {m:'May',v:1222,label:'20 h',tip:'May: median 20 hours, 60 leads'},
+    {m:'Jun',v:183,label:'3 h',tip:'June: median 3 hours, 56 leads'},
+    {m:'Jul',v:35,label:'35 min',tip:'July: median 35 minutes, 45 leads; 60% within an hour'}
+  ],{max:2100,ticks:[0,720,1440,2160].slice(0,3),tickFmt:function(t){return (t/60)+'h';},color:function(d,i){return i>=4?'#1f4d3a':'#b9c7bf';}});
+
+  // schedule chart
+  (function(){
+    var svg=document.getElementById('svg-sched');if(!svg)return;
+    var L=320,R=1080,T=34,x0=6,x1=24;function X(hh){return L+(R-L)*(hh-x0)/(x1-x0);}
+    for(var hh=6;hh<=24;hh+=2){el('line',{x1:X(hh),x2:X(hh),y1:T-6,y2:448,stroke:hh%6===0?'#ddd6c8':'#efeae0','stroke-width':1},svg);var t=el('text',{x:X(hh),y:T-12,'text-anchor':hh===24?'end':'middle','font-size':12,fill:'#6b7772'},svg);t.textContent=hh===12?'noon':hh===24?'midnight':(hh>12?(hh-12)+' pm':hh+' am');}
+    var rows=[
+      {n:'New-lead sweep',d:'every minute',a:7.5,b:21,k:'band'},
+      {n:'Inbound email check',d:'every minute',a:6,b:24,k:'band'},
+      {n:'Follow-up sends',d:'every minute',a:7,b:21,k:'band'},
+      {n:'Overnight replies released',d:'8:00 to 8:30',a:8,b:8.5,k:'band',hot:1},
+      {n:'Quote-send sweep',d:'every 30 min',a:8.07,b:20.6,k:'tick',every:0.5},
+      {n:'Asana card sync',d:'every 5 min',a:8,b:21,k:'band'},
+      {n:'Won-deal handoff',d:'every 10 min',a:8.1,b:20,k:'band'},
+      {n:'Close-date sweep',d:'hourly',a:8.42,b:18.5,k:'tick',every:1},
+      {n:'Promise watchdog',d:'every 15 min',a:6,b:24,k:'tick',every:0.25},
+      {n:'Architect review',d:'7, 11 and 3',pts:[7,11,15],k:'dot',hot:1},
+      {n:'Repair audit',d:'every 2 hours',pts:[7.5,9.5,11.5,13.5,15.5,17.5,19.5,21.5,23.5],k:'dot'},
+      {n:'Code drift check',d:'4 times a day',pts:[8.75,12.75,16.75,20.75],k:'dot'},
+      {n:'Follow-up drafts written',d:'8 pm and 11 pm',pts:[20,23],k:'dot',hot:1}
+    ];
+    rows.forEach(function(r,i){
+      var y=T+14+i*31;
+      var tn=el('text',{x:0,y:y+5,'font-size':13.5,'font-weight':600,fill:'#14231d'},svg);tn.textContent=r.n;
+      var td=el('text',{x:196,y:y+5,'font-size':12,fill:'#6b7772'},svg);td.textContent=r.d;
+      var col=r.hot?'#b08a4a':'#2f6b52';
+      if(r.k==='band'){el('rect',{x:X(r.a),y:y-6,width:Math.max(4,X(r.b)-X(r.a)),height:12,rx:6,fill:col,opacity:r.hot?1:.82},svg);}
+      if(r.k==='tick'){for(var t=r.a;t<r.b;t+=r.every){el('rect',{x:X(t)-1,y:y-7,width:2,height:14,rx:1,fill:col},svg);}}
+      if(r.k==='dot'){r.pts.forEach(function(p){el('circle',{cx:X(p),cy:y,r:6,fill:col},svg);});}
+    });
+  })();
+
+  // repair loop
+  (function(){
+    var svg=document.getElementById('svg-loop');if(!svg)return;
+    var cx=260,cy=260,R=180;
+    el('circle',{cx:cx,cy:cy,r:R,fill:'none',stroke:'#ddd6c8','stroke-width':2,'stroke-dasharray':'6 8'},svg);
+    var steps=[['Job checks','its own work'],['Failure','becomes a ticket'],['QA bot','diagnoses, fixes'],['Architect','approves'],['Fix ships','through Git'],['Auditor','checks live']];
+    var pos=[];
+    steps.forEach(function(s,i){
+      var a=-Math.PI/2+i*2*Math.PI/steps.length,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);pos.push([x,y]);
+      el('circle',{cx:x,cy:y,r:54,fill:i===5?'#1f4d3a':'#fff',stroke:i===5?'#1f4d3a':'#b08a4a','stroke-width':2},svg);
+      var t1=el('text',{x:x,y:y-3,'text-anchor':'middle','font-size':14,'font-weight':700,fill:i===5?'#fff':'#14231d'},svg);t1.textContent=s[0];
+      var t2=el('text',{x:x,y:y+15,'text-anchor':'middle','font-size':11.5,fill:i===5?'#d4e2da':'#6b7772'},svg);t2.textContent=s[1];
+    });
+    var mid1=el('text',{x:cx,y:cy-8,'text-anchor':'middle','font-size':34,'font-family':'Libre Baskerville, Georgia, serif',fill:'#14231d'},svg);mid1.textContent='14,148';
+    var mid2=el('text',{x:cx,y:cy+18,'text-anchor':'middle','font-size':13,fill:'#6b7772'},svg);mid2.textContent='tickets, 99.8% closed';
+    var dot=el('circle',{r:7,fill:'#e8b54d'},svg);
+    var t0=null;function frame(ts){if(!t0)t0=ts;var p=((ts-t0)/9000)%1,a=-Math.PI/2+p*2*Math.PI;dot.setAttribute('cx',cx+R*Math.cos(a));dot.setAttribute('cy',cy+R*Math.sin(a));requestAnimationFrame(frame);}
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(frame);else{dot.setAttribute('cx',pos[0][0]);dot.setAttribute('cy',pos[0][1]);}
+  })();
+
+  // architecture stepper
+  var S=[
+    {h:'A web inquiry lands in the CRM',p:'The customer fills in the website form. A new deal appears in the CRM with their project details and reference photo.',w:'Why: the CRM stays the single source of truth. The system never keeps a private copy of the pipeline.',n:['pipedrive']},
+    {h:'Within a minute, a scheduled job notices',p:'The new-lead sweep runs every minute on weekdays. It takes the shared browser, opens the deal and reads the form, the photo and the deadline.',w:'Why: a timer plus a real browser is how you automate a CRM with no API. 1 job holds the browser at a time.',n:['clock','browser','hetzner']},
+    {h:'Claude writes the first reply',p:'The reply is about their project and asks the 1 or 2 questions that matter. It is saved in the deal; overnight leads go out at 8 am.',w:'Why: speed wins, but a reply at 2 am looks like a bot. Held until business hours.',n:['claude','browser','pipedrive']},
+    {h:'Concepts, quote and quote page',p:'Codex and Gemini draw 3 concepts. The Auto Quote template is filled from the pricing rules, and a quote page is published with its own link.',w:'Why: nobody buys what they cannot see, and every price comes from the same rules.',n:['codex','gemini','pages','pipedrive']},
+    {h:'The job proves the work landed',p:'It reloads the deal and checks the email, note or card is really there. If not, it tries again, then files a ticket.',w:'Why: on a screen, &ldquo;looks saved&rdquo; and &ldquo;is saved&rdquo; are different things.',n:['browser','pipedrive','board']},
+    {h:'Something breaks: the crew fixes it',p:'The QA bot diagnoses and proposes a fix, the architect approves it, the fix ships through Git, and the auditor re-checks the live deal.',w:'Why: the screen changes. The system has to repair itself without waking a person at night.',n:['board','claude','codex']},
+    {h:'Won: the handoff goes out',p:'The Asana card is written from the whole deal, a handoff email goes to the customer, and Slack pings only if a person must act.',w:'Why: production starts from the customer\'s actual decisions, not from memory.',n:['asana','slack','pipedrive']},
+    {h:'Brooks, from anywhere',p:'He reviews drafts, makes the calls and closes. When the CRM asks for a new login, he signs in to the server\'s browser through the private tunnel.',w:'Why: the system does the typing; the person does the selling.',n:['laptop','tailscale']}
+  ];
+  var dots=document.getElementById('dots'),cur=0,timer=null,playing=true;
+  S.forEach(function(s,i){var b=document.createElement('button');b.textContent=i+1;b.setAttribute('aria-label','Step '+(i+1));b.addEventListener('click',function(){go(i);stop();});dots.appendChild(b);});
+  var pb=document.createElement('button');pb.className='play';pb.textContent='Pause';pb.addEventListener('click',function(){playing?stop():start();});dots.appendChild(pb);
+  function go(i){cur=i;var s=S[i];document.getElementById('st-n').textContent=i+1;document.getElementById('st-h').textContent=s.h;document.getElementById('st-p').textContent=s.p;document.getElementById('st-w').innerHTML=s.w;
+    [].forEach.call(dots.querySelectorAll('button:not(.play)'),function(b,j){b.classList.toggle('on',j===i);});
+    [].forEach.call(document.querySelectorAll('#arch .node'),function(n){n.classList.toggle('on',s.n.indexOf(n.dataset.n)>=0);});
+    var bar=document.getElementById('st-bar');bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;if(playing){bar.style.transition='width 5.2s linear';bar.style.width='100%';}}
+  function start(){playing=true;pb.textContent='Pause';clearInterval(timer);timer=setInterval(function(){go((cur+1)%S.length);},5400);go(cur);}
+  function stop(){playing=false;pb.textContent='Play';clearInterval(timer);var bar=document.getElementById('st-bar');bar.style.transition='none';bar.style.width='0';}
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  go(0);
+  if(!reduce&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&playing)start();else clearInterval(timer);});},{threshold:.25});io.observe(document.getElementById('no-api'));}
+  else{stop();}
+})();
+</script>
+</body>
+</html>
