@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/keel-mark.svg">
+<title>Keelwater | For investors</title>
+<meta name="description" content="Keelwater is building an AI-enabled accounting roll-up, implementing repeatable, AI-enabled operations across the firms it acquires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14231d;--ink-2:#3b4a44;--muted:#6b7772;--paper:#f7f4ee;--paper-2:#efeae0;--line:#ddd6c8;--green:#1f4d3a;--green-2:#2f6b52;--brass:#b08a4a;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;letter-spacing:-.005em;line-height:1.18}
+h1{font-size:clamp(36px,5vw,58px)}
+h2{font-size:clamp(28px,3.8vw,42px);margin-bottom:18px}
+h3{font-size:21px;margin-bottom:8px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:640px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:15px 26px;border-radius:6px;transition:.15s}
+.btn-primary{background:var(--green);color:var(--white)}
+.btn-primary:hover{background:var(--green-2)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+header.nav{position:sticky;top:0;z-index:10;background:rgba(247,244,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Outfit,Inter,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.015em}
+.nav ul{display:flex;gap:30px;list-style:none;font-size:15px;color:var(--ink-2)}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--ink)}
+.nav ul a.on{color:var(--ink);font-weight:600}
+.nav .btn{padding:10px 18px;font-size:15px}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px 4px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0}
+.nav ul .m-dp{display:none}
+
+.hero{padding:96px 0 72px}
+.hero h1{max-width:920px;margin-bottom:26px}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.logostrip{margin-top:64px}
+.logostrip .lbl{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mtrack{display:flex;align-items:center;gap:72px;width:max-content;padding-right:72px;animation:mq 30s linear infinite}
+.marquee:hover .mtrack{animation-play-state:paused}
+.mtrack img{height:26px;width:auto;opacity:.8;filter:grayscale(20%)}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:88px 0}
+.alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lede,.dark p{color:#c9d1cc}
+.dark .eyebrow{color:#d4b37a}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.list{list-style:none;display:grid;gap:10px;margin-top:14px}
+.list li{padding-left:26px;position:relative;color:var(--ink-2)}
+.list li:before{content:"";position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--brass)}
+.callout{margin-top:26px;font-family:"Libre Baskerville",Georgia,serif;font-size:24px;line-height:1.3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.stat{border-top:2px solid #d4b37a;padding-top:18px}
+.stat b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:60px;line-height:1;color:var(--paper);margin-bottom:10px}
+.source{margin-top:30px;font-size:13px;color:#93a09a}
+.source a{color:#c9d1cc}
+.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;position:relative}
+.rail:before{content:"";position:absolute;left:7%;right:7%;top:24px;height:2px;background:var(--line)}
+.rnode .dot{width:50px;height:50px;border-radius:50%;background:var(--paper-2);border:2px solid var(--brass);display:flex;align-items:center;justify-content:center;font-family:"Libre Baskerville",Georgia,serif;font-size:16px;color:var(--brass);margin-bottom:18px;position:relative}
+.rnode h3{margin-bottom:6px}
+.rnode p{color:var(--ink-2);font-size:15.5px}
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.offer{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:30px;display:flex;flex-direction:column}
+.offer .dur{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-2);margin-bottom:12px}
+.offer p{color:var(--ink-2);font-size:15.5px}
+.offer .list{font-size:15px;margin-bottom:18px}
+.offer .cta-link{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.offer .cta-link a{font-size:14.5px;font-weight:600;color:var(--green);text-decoration:none}
+.offer .cta-link a:hover{color:var(--green-2);text-decoration:underline}
+.quote{font-family:"Libre Baskerville",Georgia,serif;font-size:clamp(27px,3.2vw,38px);line-height:1.25;max-width:860px}
+.quote:before{content:"\201C";display:block;font-size:84px;line-height:.5;color:var(--brass);margin-bottom:22px}
+.fit{display:grid;grid-template-columns:1fr;gap:22px;margin-top:40px;max-width:640px}
+.fitcard{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:30px}
+.fitcard .list li:before{content:"\2713";background:none;width:auto;height:auto;top:1px;color:var(--green-2);font-weight:600;font-size:15px}
+.proof{display:flex;gap:40px;align-items:center}
+.proof .badge{flex:0 0 auto;width:120px;height:120px;border-radius:50%;border:1.5px solid var(--brass);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);padding:14px}
+.measure{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;align-items:center}
+.measure .lab{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+.chip{border:1px solid var(--line);background:var(--white);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500;color:var(--ink-2)}
+.results{margin-top:64px;min-width:0}
+.results .lbl{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.results .lbl em{display:block;font-style:normal;text-transform:none;letter-spacing:0;font-weight:400;font-size:13.5px;color:var(--ink-2);margin-top:8px;max-width:720px}
+.mtrack2{display:flex;gap:22px;width:max-content;padding-right:22px;animation:mq 48s linear infinite}
+.marquee:hover .mtrack2{animation-play-state:paused}
+.rcard{flex:0 0 auto;width:252px;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+.rcard b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:34px;line-height:1.1;color:var(--green);margin-bottom:10px}
+.rcard p{color:var(--ink-2);font-size:14.5px;line-height:1.45;margin:0 0 12px}
+.rcard span{font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.founder{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start}
+.portrait{width:220px;height:260px;border-radius:10px;object-fit:cover;object-position:50% 18%;display:block}
+.founder p{color:var(--ink-2);margin-bottom:14px;max-width:680px}
+.owner{border-left:3px solid var(--brass);padding-left:28px}
+.cmp{width:100%;border-collapse:collapse;margin-top:40px;font-size:15.5px}
+.cmp th{font-family:Outfit,Inter,sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:0 18px 14px;color:var(--muted)}
+.cmp th:last-child{color:var(--green)}
+.cmp td{padding:14px 18px;border-top:1px solid var(--line);color:var(--muted);vertical-align:top}
+.cmp td:last-child{color:var(--ink);font-weight:500}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
+.trust>div{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px}
+.trust .ic{width:26px;height:26px;stroke:var(--green-2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:14px}
+.trust p{color:var(--ink-2);font-size:15px}
+.ecosystem{margin-top:22px;border:1.5px dashed var(--green-2);border-radius:10px;padding:28px 30px;display:flex;justify-content:space-between;align-items:center;gap:28px;background:#f3f6f2}
+.ecosystem p{color:var(--ink-2);font-size:15.5px;max-width:720px}
+.cta{text-align:center}
+.cta .lede{margin:0 auto 34px}
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media (max-width:900px){
+ .trust{grid-template-columns:1fr 1fr}
+ .menu-btn{display:block}
+ .nav ul{display:none;position:absolute;top:72px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:8px 28px 16px}
+ body.menu-open .nav ul{display:flex}
+ .nav ul li{padding:13px 0;border-top:1px solid var(--line)}
+ .nav ul li:first-child{border-top:0}
+ .nav ul .m-dp{display:block}
+ .nav ul .m-dp a{font-weight:600;color:var(--green)}
+ .two,.fit,.founder{grid-template-columns:1fr;gap:32px}
+ .rail{grid-template-columns:1fr 1fr}
+ .rail:before{display:none}
+ .offers,.stats{grid-template-columns:1fr}
+ .ecosystem,.proof{flex-direction:column;align-items:flex-start}
+ section{padding:64px 0}
+ .hero{padding:64px 0 48px}
+}
+@media (max-width:520px){.rail,.trust{grid-template-columns:1fr}.wrap{padding:0 20px}.nav .btn{display:none}.cmp{font-size:14px}.cmp td,.cmp th{padding-left:8px;padding-right:8px}}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+ <a class="logo" href="index.html"><img src="/keel-mark.svg" width="32" height="32" alt="">Keelwater</a>
+ <ul><li><a href="index.html#for-firms">For Firms</a></li><li><a href="index.html#results">Results</a></li><li><a href="index.html#founder">About</a></li><li><a class="on" href="investors.html">Investors</a></li><li class="m-dp"><a href="mailto:hello@keelwater.com?subject=Investor%20Conversation">Investor Conversation</a></li></ul>
+ <a class="btn btn-primary" href="mailto:hello@keelwater.com?subject=Investor%20Conversation">Investor Conversation</a>
+ <button class="menu-btn" aria-label="Menu" aria-expanded="false" onclick="kwMenu()"><span></span><span></span><span></span></button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+ <div class="eyebrow">For investors</div>
+ <h1>Building an AI-enabled accounting roll-up.</h1>
+ <p class="lede">We're building an accounting roll-up, implementing repeatable, AI-enabled operations across the firms we acquire. AI is turning historically low-margin service businesses into software-like investment opportunities.</p>
+ <div class="actions"><a class="btn btn-primary" href="mailto:hello@keelwater.com?subject=Investor%20Conversation">Start a Conversation</a><a class="btn btn-ghost" href="#model">See the Operating Model</a></div>
+</div></section>
+
+<section class="alt"><div class="wrap two">
+ <div>
+  <div class="eyebrow">The investment thesis</div>
+  <h2>Services were historically constrained by labor. AI changes the economics.</h2>
+ </div>
+ <div>
+  <p class="lede" style="font-size:18px">Traditional service businesses have historically been difficult to scale: revenue growth usually requires proportional headcount growth. That limits margins and operating leverage.</p>
+  <p class="lede" style="font-size:18px;margin-top:16px">AI changes that equation. When repetitive production work can be automated while professional judgment stays with the human, the same team can support more revenue - creating increasingly software-like economics inside a durable service business.</p>
+  <p class="lede" style="font-size:18px;margin-top:16px">Keelwater is applying that thesis to accounting.</p>
+  <p class="callout">AI is turning historically low-margin service businesses into software-like investment opportunities.</p>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="eyebrow">Why accounting</div>
+ <h2 style="max-width:820px">A fragmented, recurring service market with a capacity problem.</h2>
+ <div class="trust">
+  <div><h3>Recurring client relationships</h3><p>Tax, bookkeeping and CAS relationships repeat annually or monthly.</p></div>
+  <div><h3>Labor-constrained growth</h3><p>Good firms routinely hit hiring and busy-season capacity constraints.</p></div>
+  <div><h3>Measurable workflows</h3><p>Document intake, preparation, reconciliations, close and client communication can be measured before and after AI deployment.</p></div>
+  <div><h3>Succession + consolidation</h3><p>A fragmented owner-led market creates a natural platform-and-add-on acquisition model.</p></div>
+ </div>
+</div></section>
+
+<section id="model" class="alt"><div class="wrap">
+ <div class="eyebrow">The Keelwater model</div>
+ <h2>Prove. Own. Compound.</h2>
+ <div class="rail">
+  <div class="rnode"><div class="dot">01</div><h3>Prove</h3><p>Deploy the operating system inside independent design partners. Measure the economics in real workflows before buying anything.</p></div>
+  <div class="rnode"><div class="dot">02</div><h3>Own</h3><p>Acquire a high-quality tax/CAS platform and deploy the proven operating system inside a business Keelwater controls.</p></div>
+  <div class="rnode"><div class="dot">03</div><h3>Compound</h3><p>Acquire additional firms, apply the same AI and commercial playbook, reinvest cash flow and build a larger permanent platform.</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="eyebrow">The operating advantage</div>
+ <h2 style="max-width:820px">AI creates the operating leverage. Growth monetizes it.</h2>
+ <div class="two" style="margin-top:40px">
+  <div>
+   <h3>AI-enabled operations</h3>
+   <ul class="list"><li>Workflow mapping</li><li>Document intake</li><li>Tax-prep support</li><li>Reconciliation</li><li>Close</li><li>Client communication</li><li>Governance and human review</li><li>Reusable integrations</li></ul>
+  </div>
+  <div>
+   <h3>Commercial transformation</h3>
+   <ul class="list"><li>Pricing</li><li>Advisory packaging</li><li>Cross-sell</li><li>Positioning</li><li>Lead generation</li><li>Sales systems</li><li>Revenue operations</li></ul>
+  </div>
+ </div>
+ <p class="callout">Most AI strategies stop at hours saved. Keelwater is built to turn those hours into revenue and enterprise value.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+ <div class="eyebrow">De-risking the first acquisition</div>
+ <h2 style="max-width:720px">Before we buy, we prove.</h2>
+ <p class="lede">Keelwater is currently developing the operating system with a small group of design-partner firms. The objective is to establish repeatable, quantified results across multiple accounting teams before deploying outside capital into the first platform acquisition.</p>
+ <div class="measure" style="margin-top:32px"><span class="lab">What we prove</span><span class="chip">Measurable operating improvement</span><span class="chip">Repeatability across firms</span><span class="chip">Willingness to pay</span><span class="chip">Owner references</span><span class="chip">Reusable workflows</span><span class="chip">Acquisition pipeline</span></div>
+</div></section>
+
+<section id="founder"><div class="wrap">
+ <div class="founder">
+  <div><img class="portrait" src="/brooks.jpg" alt="Brooks Golden, founder of Keelwater"></div>
+  <div>
+   <div class="eyebrow">Founder and team</div>
+   <h2 style="max-width:680px">Commercial transformation is already proven. Accounting-specific execution is what we're validating now.</h2>
+   <p>Founder Brooks Golden has spent eight years building growth and transformation systems inside B2B service businesses. Keelwater combines that commercial capability with an accounting-specific AI operating system and domain expertise assembled around the platform.</p>
+   <p>The founder's role is commercial transformation, platform strategy, capital allocation and acquisitions. The team is being built around complementary strengths: accounting operations, applied AI, and M&amp;A / finance.</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="alt"><div class="wrap owner">
+ <div class="eyebrow">Long-term ownership</div>
+ <h2 style="max-width:720px">Building for decades, not a three-year flip.</h2>
+ <p class="lede">Keelwater is being built as a long-term owner, not a financial engineering vehicle. The goal is to preserve what makes great firms valuable, then give them technology, commercial capability, talent and capital that are difficult to build independently. As the platform develops, we expect to partner selectively with owners thinking about succession, liquidity or the next stage of growth.</p>
+ <p style="margin-top:24px"><a class="btn btn-ghost" href="mailto:hello@keelwater.com?subject=Long-Term%20Partnership">Start a Long-Term Conversation</a></p>
+</div></section>
+
+<section><div class="wrap">
+ <div class="eyebrow">Who we want to meet</div>
+ <h2 style="max-width:720px">The people who build this with us.</h2>
+ <div class="offers">
+  <div class="offer"><h3>Capital partners</h3><p>Long-duration investors interested in AI-enabled services and lower-middle-market platform acquisitions.</p></div>
+  <div class="offer"><h3>Accounting operators</h3><p>Experienced tax/CAS leaders who want to build the next generation of firms.</p></div>
+  <div class="offer"><h3>M&amp;A and finance professionals</h3><p>People with lower-middle-market deal and integration experience.</p></div>
+  <div class="offer"><h3>Applied-AI builders</h3><p>Engineers and operators interested in deploying AI directly into owned service businesses.</p></div>
+  <div class="offer"><h3>Firm owners</h3><p>Owners thinking about succession, liquidity or joining a larger growth platform.</p></div>
+ </div>
+</div></section>
+
+<section class="dark cta"><div class="wrap">
+ <div class="eyebrow">Get in touch</div>
+ <h2>Help build the accounting platform AI makes possible.</h2>
+ <p class="lede">We are currently proving the operating system and building relationships with long-term capital partners, operators and potential platform firms.</p>
+ <a class="btn btn-primary" style="background:#d4b37a;color:var(--ink)" href="mailto:hello@keelwater.com?subject=Investor%20Conversation">Start a Conversation</a>
+ <p class="source" style="margin-top:22px">Or email hello@keelwater.com</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <span>&copy; 2026 Keelwater</span>
+ <span>Keelwater is not a CPA firm and does not provide attest services.</span>
+</div></footer>
+<script>
+function kwMenu(){document.body.classList.toggle('menu-open');var b=document.querySelector('.menu-btn');if(b)b.setAttribute('aria-expanded',document.body.classList.contains('menu-open'))}
+document.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open')})})
+</script>
+</body>
+</html>
