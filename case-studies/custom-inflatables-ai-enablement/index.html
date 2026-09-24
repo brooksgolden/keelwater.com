@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../../keel-mark.svg">
+<title>Case study: AI-enabled sales at Custom Inflatables | Keelwater</title>
+<meta name="description" content="How one salesperson put an AI operating layer under a CRM with no API, cut 10-hour days to 4 to 8 hours, and finished 2026 ranked first of 17 reps on close rate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14231d;--ink-2:#3b4a44;--muted:#6b7772;--paper:#f7f4ee;--paper-2:#efeae0;--line:#ddd6c8;--green:#1f4d3a;--green-2:#2f6b52;--green-3:#e6efe9;--brass:#b08a4a;--brass-2:#d4b37a;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block;height:auto}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;letter-spacing:-.005em;line-height:1.18}
+h1{font-size:clamp(34px,4.8vw,56px)}
+h2{font-size:clamp(27px,3.6vw,40px);margin-bottom:18px}
+h3{font-size:21px;margin-bottom:8px}
+p{max-width:720px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:680px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:15px 26px;border-radius:6px;transition:.15s}
+.btn-primary{background:var(--green);color:var(--white)}
+.btn-primary:hover{background:var(--green-2)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+header.nav{position:sticky;top:0;z-index:20;background:rgba(247,244,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Outfit,Inter,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.015em}
+.nav .right{display:flex;align-items:center;gap:22px;font-size:15px;color:var(--ink-2)}
+.nav .right a{text-decoration:none}
+.nav .btn{padding:10px 18px;font-size:15px}
+section{padding:84px 0}
+.alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lede,.dark p{color:#c9d1cc}
+.dark .eyebrow{color:var(--brass-2)}
+.note{font-size:13.5px;color:var(--muted);max-width:760px}
+.dark .note{color:#93a09a}
+.src{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* hero */
+.hero{padding:88px 0 64px}
+.hero h1{max-width:900px;margin-bottom:22px}
+.hero .lede{margin-bottom:34px}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 54px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tile{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px 22px 18px}
+.tile b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:40px;line-height:1.05;color:var(--green);margin-bottom:8px;letter-spacing:-.01em}
+.tile b small{font-size:22px}
+.tile p{font-size:14.5px;color:var(--ink-2);margin-bottom:10px;line-height:1.4}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;font-size:14px;color:var(--ink-2)}
+.facts span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--brass);margin-right:10px;vertical-align:1px}
+
+/* sub nav */
+.subnav{position:sticky;top:72px;z-index:15;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.subnav a{white-space:nowrap;text-decoration:none;font-size:13.5px;font-weight:500;color:var(--ink-2);padding:7px 13px;border-radius:999px;border:1px solid transparent}
+.subnav a:hover,.subnav a.on{background:var(--white);border-color:var(--line);color:var(--ink)}
+
+/* figures */
+figure.shot{margin:26px 0 0;background:var(--white);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(20,35,29,.05)}
+figure.shot img{width:100%;cursor:zoom-in}
+figure.shot figcaption{padding:12px 16px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);background:var(--paper)}
+figure.shot figcaption b{color:var(--ink-2);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.two.tight{gap:36px}
+
+/* results */
+.chart-wrap{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:26px 26px 18px;margin-top:28px}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.chart-head h3{margin:0;font-size:19px}
+.legend{display:flex;gap:18px;font-size:13px;color:var(--ink-2)}
+.legend i{display:inline-block;width:14px;height:10px;border-radius:2px;background:var(--green-2);margin-right:7px;vertical-align:-1px}
+.legend i.rep{background:repeating-linear-gradient(135deg,var(--green-2) 0 3px,#fff 3px 6px);border:1px solid var(--green-2)}
+svg.chart{width:100%;height:auto;display:block}
+.chart-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-size:13px;padding:6px 10px;border-radius:6px;transform:translate(-50%,-120%);white-space:nowrap;opacity:0;transition:opacity .12s}
+.vals{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px;font-size:13px;text-align:center;color:var(--ink-2)}
+.vals b{display:block;font-weight:600;color:var(--ink)}
+.vals .rep b:after{content:"*";color:var(--brass)}
+
+/* day before/after */
+.days{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:36px}
+.day{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:26px}
+.day h3{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.day h3 span{font-family:Inter,sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.day ol{list-style:none;margin-top:14px;display:grid;gap:10px}
+.day li{display:grid;grid-template-columns:64px 1fr;gap:12px;font-size:15px;color:var(--ink-2)}
+.day li em{font-style:normal;font-weight:600;color:var(--brass);font-size:13px;letter-spacing:.04em;padding-top:2px}
+.day.after{border-color:var(--green-2)}
+.day.after li em{color:var(--green-2)}
+.day .sum{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-family:"Libre Baskerville",Georgia,serif;font-size:19px}
+
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:40px 0 10px;position:relative}
+.journey:before{content:"";position:absolute;left:8%;right:8%;top:24px;height:2px;background:var(--line)}
+.jnode{text-align:center;padding:0 8px}
+.jnode .dot{width:50px;height:50px;border-radius:50%;background:var(--paper-2);border:2px solid var(--brass);display:flex;align-items:center;justify-content:center;font-family:"Libre Baskerville",Georgia,serif;font-size:16px;color:var(--brass);margin:0 auto 12px;position:relative;background:var(--paper)}
+.jnode b{display:block;font-weight:600;font-size:15px}
+.jnode span{font-size:13px;color:var(--muted)}
+.group{margin-top:64px}
+.group .eyebrow{margin-bottom:8px}
+.group h3.gt{font-size:clamp(24px,3vw,32px);margin-bottom:6px}
+.group > p.lede{font-size:17px;margin-bottom:8px}
+.lev{margin-top:30px;display:grid;grid-template-columns:1fr;gap:6px;align-items:start}
+.lev>div{display:grid;grid-template-columns:1.15fr .85fr;gap:12px 44px;align-items:start}
+.lev h4{grid-column:1/-1;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:24px;line-height:1.25;margin-bottom:10px;max-width:820px}
+.lev .ba{grid-column:1;margin:0}
+.lev .why{grid-column:2;grid-row:2}
+.lev .kpi{grid-column:2;grid-row:3;align-self:start}
+.lev figure.shot{margin-top:22px}
+figure.shot.narrow{max-width:640px;justify-self:center;width:100%}
+.lev h4 i{font-style:normal;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);display:block;margin-bottom:8px}
+.ba{display:grid;gap:12px;margin:0 0 14px}
+.ba div{padding-left:16px;border-left:3px solid var(--line);font-size:15.5px;color:var(--ink-2)}
+.ba div b{display:block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.ba div.now{border-color:var(--green-2)}
+.ba div.now b{color:var(--green-2)}
+.why{background:var(--green-3);border-radius:8px;padding:12px 16px;font-size:15px;color:var(--ink)}
+.why b{color:var(--green);font-weight:600}
+.kpi{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--muted)}
+.kpi b{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:20px;color:var(--green);margin-right:6px}
+.pull{margin:10px 0 0;padding:18px 22px;background:var(--white);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:8px;font-family:"Libre Baskerville",Georgia,serif;font-size:19px;line-height:1.35}
+.pull small{display:block;font-family:Inter,sans-serif;font-size:13px;color:var(--muted);margin-top:8px}
+.trio{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:auto auto;gap:12px;margin-top:26px}
+.trio figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--white)}
+.trio figure:first-child{grid-row:1/3}
+.trio img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.trio figcaption{padding:8px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.mini > div{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px}
+.mini h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:19px;margin-bottom:8px}
+.mini p{font-size:14.5px;color:var(--ink-2)}
+.mini .kpi{margin-top:10px}
+
+/* numbers */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:40px}
+.stat{border-top:2px solid var(--brass-2);padding-top:16px}
+.stat b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:44px;line-height:1;color:var(--paper);margin-bottom:8px;letter-spacing:-.01em}
+.stat p{font-size:14.5px}
+.stat span{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#93a09a;margin-top:6px}
+
+/* architecture */
+.arch{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px;margin-top:30px;overflow:hidden}
+.arch svg{width:100%;height:auto;display:block;font-family:Inter,sans-serif}
+.arch .cap{font-size:13.5px;color:var(--muted);margin-top:12px}
+.plain{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.plain > div{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px}
+.plain h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:19px;margin-bottom:8px}
+.plain p{font-size:14.5px;color:var(--ink-2)}
+
+/* clock */
+.clockbox{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px 22px 14px;margin-top:30px;overflow-x:auto}
+.clock{min-width:720px}
+.crow{display:grid;grid-template-columns:230px 1fr;gap:16px;align-items:center;padding:7px 0;border-top:1px solid var(--paper-2)}
+.crow:first-child{border-top:0}
+.crow .lab{font-size:13.5px;color:var(--ink-2);line-height:1.25}
+.crow .lab small{display:block;color:var(--muted);font-size:12px}
+.track{display:grid;grid-template-columns:repeat(34,1fr);height:14px;align-items:center;position:relative}
+.track:before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--paper-2)}
+.bar{height:10px;border-radius:5px;background:var(--green-2);position:relative}
+.bar.lt{background:#cfe0d6}
+.pt{width:10px;height:10px;border-radius:50%;background:var(--brass);justify-self:center;position:relative}
+.hours{display:grid;grid-template-columns:230px 1fr;gap:16px;margin-top:6px}
+.hours .track{height:auto;font-size:11.5px;color:var(--muted)}
+.hours .track:before{display:none}
+.hours span{grid-column:span 4;text-align:left}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;margin-top:30px;list-style:none}
+.rules li{padding-left:26px;position:relative;font-size:15.5px;color:var(--ink-2)}
+.rules li:before{content:"";position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--brass)}
+.rules li b{color:var(--ink);font-weight:600}
+
+/* repair loop */
+.loop{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:36px}
+.loop li{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px 14px 14px;font-size:13.5px;color:var(--ink-2);position:relative;line-height:1.4}
+.loop li b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:4px}
+.loop li:before{counter-increment:step;content:counter(step);display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--paper-2);border:1.5px solid var(--brass);color:var(--brass);font-size:12px;font-weight:600;align-items:center;justify-content:center;margin-bottom:10px}
+.loop li:after{content:"\2192";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--brass);font-size:18px;background:var(--paper-2);padding:0 2px;z-index:1}
+.loop li:last-child:after{display:none}
+.inc{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
+.inc > div{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+.inc h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:19px;margin-bottom:10px}
+.inc p{font-size:14.5px;color:var(--ink-2);margin-bottom:8px}
+.inc p b{color:var(--ink);font-weight:600}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.q{font-family:"Libre Baskerville",Georgia,serif;font-size:17px;line-height:1.4;padding:18px 20px;border-left:3px solid var(--brass);background:var(--white);border-radius:0 8px 8px 0}
+.q small{display:block;font-family:Inter,sans-serif;font-size:12.5px;color:var(--muted);margin-top:8px}
+
+/* tables */
+.tscroll{overflow-x:auto;margin-top:30px;-webkit-overflow-scrolling:touch}
+.tscroll table{margin-top:0;min-width:640px}
+table.cmp{width:100%;border-collapse:collapse;margin-top:30px;font-size:15px;background:var(--white);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cmp th{font-family:Outfit,Inter,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:14px 16px;color:var(--muted);background:var(--paper-2);border-bottom:1px solid var(--line)}
+.cmp td{padding:13px 16px;border-top:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+.cmp td:first-child{color:var(--ink);font-weight:500}
+.cmp td:last-child{color:var(--ink)}
+.prof{width:100%;border-collapse:collapse;margin-top:26px;font-size:14px;background:var(--white);border:1px solid var(--line)}
+.prof th,.prof td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.prof th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--paper-2)}
+.prof td:first-child{font-weight:500}
+.prof td em{font-style:normal;color:var(--green-2);font-weight:600}
+
+/* timeline */
+.tl{list-style:none;margin-top:34px;display:grid;gap:0;border-left:2px solid var(--line);padding-left:26px}
+.tl li{position:relative;padding:0 0 22px}
+.tl li:before{content:"";position:absolute;left:-33px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--brass)}
+.tl li b{display:block;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);margin-bottom:2px}
+.tl li span{font-size:15.5px;color:var(--ink-2)}
+
+/* sources */
+.srcs{list-style:none;display:grid;gap:12px;margin-top:26px;max-width:820px}
+.srcs li{padding-left:26px;position:relative;font-size:15px;color:var(--ink-2)}
+.srcs li:before{content:"";position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--brass)}
+.srcs li b{color:var(--ink);font-weight:600}
+
+.cta{text-align:center}
+.cta .lede{margin:0 auto 32px}
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(20,35,29,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:min(1600px,96vw);max-height:92vh;width:auto;height:auto;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb button{position:absolute;top:16px;right:20px;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;line-height:1}
+
+@media (max-width:980px){
+ .tiles,.stats{grid-template-columns:1fr 1fr}
+ .journey{grid-template-columns:repeat(5,1fr)}
+ .loop{grid-template-columns:repeat(4,1fr)}
+ .loop li:nth-child(4):after{display:none}
+ .plain,.mini,.quotes{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+ section{padding:60px 0}
+ .hero{padding:56px 0 44px}
+ .two,.lev,.lev>div,.days,.inc,.rules,.plain,.mini,.quotes{grid-template-columns:1fr}
+ .lev .why,.lev .kpi{grid-column:1;grid-row:auto}
+ .journey{grid-template-columns:repeat(5,1fr);gap:4px}
+ .journey:before{display:none}
+ .jnode span{display:none}
+ .jnode b{font-size:12px}
+ .loop{grid-template-columns:1fr 1fr}
+ .loop li:after{display:none}
+ .trio{grid-template-columns:1fr}
+ .trio figure:first-child{grid-row:auto}
+ .nav .right a.hm{display:none}
+ .subnav{top:72px}
+ .vals{grid-template-columns:repeat(4,1fr)}
+ .cmp{font-size:14px}
+ .cmp td,.cmp th{padding:10px 10px}
+}
+@media (max-width:520px){
+ .wrap{padding:0 20px}
+ .tiles,.stats{grid-template-columns:1fr}
+ .tile b{font-size:36px}
+ .nav .btn{display:none}
+ .facts{gap:8px 18px}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+ <a class="logo" href="../../index.html"><img src="../../keel-mark.svg" width="32" height="32" alt="">Keelwater</a>
+ <div class="right"><a class="hm" href="../../index.html">Home</a><a class="hm" href="../../investors.html">Investors</a><a class="btn btn-primary" href="mailto:hello@keelwater.com?subject=Design%20Partnership">Design Partnership</a></div>
+</div></header>
+
+<main id="top">
+
+<section class="hero"><div class="wrap">
+ <div class="eyebrow">Founder case study &middot; Custom Inflatables &middot; February to September 2026</div>
+ <h1>10-hour days became 4 to 8. The close rate went up.</h1>
+ <p class="lede">How one salesperson put an AI operating layer under a CRM with no API, answered every lead in minutes, showed every customer a picture of what they were buying, and finished 2026 ranked first of 17 reps on close rate.</p>
+ <div class="actions"><a class="btn btn-primary" href="#leverage">See what was automated</a><a class="btn btn-ghost" href="#how">How it runs with no API</a></div>
+ <div class="tiles">
+  <div class="tile"><b>#1 <small>of 17</small></b><p>Close rate ranking among active reps, 2026, at 20.5%</p><span class="src">Company dashboard</span></div>
+  <div class="tile"><b>10.5% <small>&rarr;</small> 25.8%</b><p>Monthly close rate, February to June: from 13th of 15 reps to 1st of 19 in 2 months</p><span class="src">Company workbook</span></div>
+  <div class="tile"><b>37% <small>&rarr;</small> 59%</b><p>Customers replying to the first-response email, manual months versus July</p><span class="src">Email archive, 388 emails</span></div>
+  <div class="tile"><b>10 <small>&rarr;</small> 4-8 <small>hrs</small></b><p>A working day: busy season before, summer after</p><span class="src">Brooks Golden's estimate</span></div>
+ </div>
+ <div class="facts"><span>23 weeks in production</span><span>No CRM API access</span><span>40 scheduled jobs</span><span>9,103 AI calls</span><span>$25.59 a month of cloud server</span></div>
+</div></section>
+
+<nav class="subnav"><div class="wrap">
+ <a href="#results">Results</a><a href="#day">A day, before and after</a><a href="#leverage">What was automated</a><a href="#numbers">By the numbers</a><a href="#how">How it runs</a><a href="#repair">Why it kept working</a><a href="#accounting">For accounting firms</a><a href="#timeline">Timeline</a><a href="#sources">Sources</a>
+</div></nav>
+
+<!--
+  VIDEO: when the walkthrough is recorded, remove the `hidden` attribute below and paste the embed
+  (Loom or YouTube iframe) inside the .video div. Keep the section right after the hero.
+-->
+<section id="video" class="alt" hidden><div class="wrap">
+ <div class="eyebrow">Walkthrough</div>
+ <h2>Watch Brooks walk through the system inside the CRM.</h2>
+ <div class="video" style="margin-top:24px;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden"></div>
+</div></section>
+
+<section id="results"><div class="wrap">
+ <div class="two">
+  <div>
+   <div class="eyebrow">The results</div>
+   <h2>Less admin, more selling, better numbers.</h2>
+   <p class="lede">Custom Inflatables makes custom inflatables for brands and organizations. Brooks Golden joined as a product specialist in February 2026 and carried a full pipeline of roughly 100 new leads a month in season.</p>
+   <p style="margin-top:16px;color:var(--ink-2)">Between March and August he built and ran the automation described on this page, while doing the sales job. In February he ranked 13th of 15 reps on close rate. By April he was 1st of 19, and he stayed 1st or 2nd through June, about 6 points above the team average. The company's year-to-date leaderboard puts him first of 17 active reps. The working day went from roughly 10 hours in busy season to 4 to 8 hours.</p>
+   <p style="margin-top:16px;color:var(--ink-2)">Sales skill, lead mix and timing all play a part in a close rate, so this page does not claim the software did all of it. It shows what the system did, what it cost to run, and how it stayed reliable.</p>
+  </div>
+  <div>
+   <div class="chart-wrap" style="margin-top:0;position:relative">
+    <div class="chart-head"><h3>Monthly close rate, new leads</h3><div class="legend"><span><i></i>Company workbook</span><span><i class="rep"></i>Reported by Brooks</span></div></div>
+    <svg class="chart" viewBox="0 0 720 290" role="img" aria-label="Monthly close rate: February 10.5 percent, March 17.1, April 23.0, May 23.4, June 25.8, July 24.1 reported, August about 22.5 reported">
+     <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><rect width="3" height="6" fill="#2f6b52"/></pattern></defs>
+     <g stroke="#ddd6c8" stroke-width="1"><line x1="48" y1="250" x2="700" y2="250"/><line x1="48" y1="173.3" x2="700" y2="173.3" stroke-dasharray="3 4"/><line x1="48" y1="96.7" x2="700" y2="96.7" stroke-dasharray="3 4"/><line x1="48" y1="20" x2="700" y2="20" stroke-dasharray="3 4"/></g>
+     <g font-size="12" fill="#6b7772"><text x="40" y="254" text-anchor="end">0%</text><text x="40" y="177" text-anchor="end">10%</text><text x="40" y="101" text-anchor="end">20%</text><text x="40" y="24" text-anchor="end">30%</text></g>
+     <g class="bars">
+      <rect data-l="February" data-v="10.5%" data-s="Company workbook" x="68" y="169.5" width="52" height="80.5" rx="4" fill="#2f6b52"/>
+      <rect data-l="March" data-v="17.1%" data-s="Company workbook" x="161" y="118.9" width="52" height="131.1" rx="4" fill="#2f6b52"/>
+      <rect data-l="April" data-v="23.0%" data-s="Company workbook" x="254" y="73.7" width="52" height="176.3" rx="4" fill="#2f6b52"/>
+      <rect data-l="May" data-v="23.4%" data-s="Company workbook" x="347" y="70.6" width="52" height="179.4" rx="4" fill="#2f6b52"/>
+      <rect data-l="June" data-v="25.8%" data-s="Company workbook" x="440" y="52.2" width="52" height="197.8" rx="4" fill="#2f6b52"/>
+      <rect data-l="July" data-v="24.1%" data-s="Reported by Brooks" x="533" y="65.2" width="52" height="184.8" rx="4" fill="url(#hatch)" stroke="#2f6b52"/>
+      <rect data-l="August" data-v="about 22.5%" data-s="Reported by Brooks" x="626" y="77.5" width="52" height="172.5" rx="4" fill="url(#hatch)" stroke="#2f6b52"/>
+     </g>
+     <g fill="#14231d" font-size="13" font-weight="600" text-anchor="middle"><text x="94" y="161">10.5%</text><text x="466" y="44">25.8%</text><text x="559" y="57">24.1%</text></g>
+     <g fill="#6b7772" font-size="12.5" text-anchor="middle"><text x="94" y="272">Feb</text><text x="187" y="272">Mar</text><text x="280" y="272">Apr</text><text x="373" y="272">May</text><text x="466" y="272">Jun</text><text x="559" y="272">Jul</text><text x="652" y="272">Aug</text></g>
+    </svg>
+    <div class="chart-tip" id="ctip"></div>
+    <div class="vals"><div>Feb<b>10.5%</b></div><div>Mar<b>17.1%</b></div><div>Apr<b>23.0%</b></div><div>May<b>23.4%</b></div><div>Jun<b>25.8%</b></div><div class="rep">Jul<b>24.1%</b></div><div class="rep">Aug<b>~22.5%</b></div></div>
+    <p class="note" style="margin-top:12px">Close rate = new orders divided by new leads for the month, the company's own definition. February to June come from the company's accounting workbook. * July and August are Brooks's figures from the monthly reports and are not yet reconciled to the workbook.</p>
+   </div>
+  </div>
+ </div>
+ <figure class="shot" style="margin-top:40px"><img src="assets/leaderboard.png" alt="Company leaderboard for January 1 to September 30, 2026 showing Brooks Golden ranked 1 of 17 account executives with a 20.5 percent conversion rate" loading="lazy"><figcaption><b>Company leaderboard, 2026.</b> Ranked 1 of 17 active reps on conversion at 20.5%, 791 leads, 167 won. The filter runs January 1 to September 30; Brooks's last day was September 18. Other reps' rows removed.</figcaption></figure>
+</div></section>
+
+<section id="day" class="alt"><div class="wrap">
+ <div class="eyebrow">The job</div>
+ <h2>Every lead needed the same 6 things. All of them were manual.</h2>
+ <p class="lede">A fast first reply. A picture of the product. A quote. Follow-up until an answer. A phone call. A clean handoff to production when they bought. With about 80 active deals at any time, a rep can personally touch 10 to 20 a day. The rest sit. And Pipedrive, the CRM, offered no API access on this plan, so none of it could be automated the conventional way.</p>
+ <div class="days">
+  <div class="day"><h3>Busy season, before <span>as Brooks describes it</span></h3>
+   <ol>
+    <li><em>7:30</em>Triage the inbox and hand-write first replies to overnight inquiries</li>
+    <li><em>9:00</em>Calls, when there was time between emails</li>
+    <li><em>10:30</em>Type quotes line by line from call notes, 10 to 15 minutes each</li>
+    <li><em>13:00</em>Chase follow-ups from memory; some slip</li>
+    <li><em>15:00</em>Hunt Drive folders for example photos, build mockups by hand</li>
+    <li><em>17:00</em>Rewrite closed deals for customer service and engineering</li>
+    <li><em>19:00</em>Catch up on the replies that arrived during all of the above</li>
+   </ol>
+   <p class="sum">About 10 hours</p>
+  </div>
+  <div class="day after"><h3>With the system, summer <span>as Brooks describes it</span></h3>
+   <ol>
+    <li><em>8:00</em>Review the first responses the system drafted and released at 8:00; send</li>
+    <li><em>9:00</em>Make the calls the system scheduled the day before</li>
+    <li><em>11:00</em>Review quotes and concept images that arrived as saved drafts; send</li>
+    <li><em>13:00</em>Answer inbound replies from drafts already written from the deal history</li>
+    <li><em>15:00</em>Check the labels on the board: what needs a human today</li>
+    <li><em>16:00</em>Done, or work on next-day prep</li>
+   </ol>
+   <p class="sum">4 to 8 hours</p>
+  </div>
+ </div>
+</div></section>
+
+<section id="leverage"><div class="wrap">
+ <div class="eyebrow">What was automated, and why each piece converts</div>
+ <h2>12 leverage points along the customer journey.</h2>
+ <p class="lede">Each one removed a specific piece of manual work. Each one also changed something the customer felt: speed, clarity, or attention. They were built in roughly this order, and they depend on each other.</p>
+ <div class="journey">
+  <div class="jnode"><div class="dot">01</div><b>Respond</b><span>minutes, not hours</span></div>
+  <div class="jnode"><div class="dot">02</div><b>Show</b><span>pictures of the product</span></div>
+  <div class="jnode"><div class="dot">03</div><b>Quote</b><span>priced and published</span></div>
+  <div class="jnode"><div class="dot">04</div><b>Follow up</b><span>and pick up the phone</span></div>
+  <div class="jnode"><div class="dot">05</div><b>Hand off</b><span>to production</span></div>
+ </div>
+
+ <div class="group">
+  <div class="eyebrow">01 &middot; Respond</div>
+  <h3 class="gt">The first response is where the customer is most interested.</h3>
+  <div class="lev">
+   <div>
+    <h4><i>Leverage point 1</i>A first response in minutes, about their project</h4>
+    <div class="ba">
+     <div><b>Before</b>Every inquiry waited for Brooks to read the web form, look at the reference photo, and write a reply between calls. Overnight and weekend leads waited longest.</div>
+     <div class="now"><b>Now</b>The system reads the inquiry, project details, deadline and reference image, writes a reply specific to the project, and saves it as a draft. A morning release window sends the overnight batch at 8:00 on weekdays. It never names a delivery date the factory cannot hit, and it checks that the email is actually in the thread before it calls the job done.</div>
+    </div>
+    <div class="why"><b>Why it converts.</b> A prospect who hears back in minutes is still thinking about the project. In the email archive, first responses got a reply 37% of the time in the manual months and 59% of the time by July. In the same mailbox, deals answered within an hour went on to close 47.8% of the time; deals answered after 3 days, 24.8%.</div>
+    <span class="kpi"><b>1,004</b>first-response drafts written by the system, May 19 to September 17</span>
+   </div>
+   <figure class="shot"><img src="assets/first-response.png" alt="A first-response email drafted in Pipedrive: Your Inflatable Bank Robber Air Dancer, with project-specific copy and the customer's reference photo" loading="lazy"><figcaption><b>Real draft, April 2026.</b> Written from the inquiry and the customer's own reference photo, saved in the CRM for review. Customer details masked.</figcaption></figure>
+  </div>
+  <div class="pull">&ldquo;Thanks for getting back so quickly Brooks.&rdquo;<small>Customer reply, July 14, 2026, to a first response the system wrote. The next day the same customer picked concept #3 and asked for a quote. Eight days later he ordered.</small></div>
+  <div class="lev flip" style="margin-top:44px">
+   <div>
+    <h4><i>Leverage point 2</i>A reply draft waiting for every inbound email</h4>
+    <div class="ba">
+     <div><b>Before</b>Re-read the thread, remember what was discussed on the call, find the quote, write from scratch.</div>
+     <div class="now"><b>Now</b>When a customer writes back, the system reads the whole deal (emails, call transcripts, quote, files, concept images) and saves a draft reply. If the customer picked a concept, the draft knows which one. Brooks reads, edits if needed, and sends.</div>
+    </div>
+    <div class="why"><b>Why it converts.</b> Fast, consistent answers without losing the thread, on 30 open conversations at once.</div>
+    <span class="kpi"><b>962</b>inbound reply drafts written, May to September</span>
+   </div>
+   <figure class="shot"><img src="assets/follow-up-sms.png" alt="A deal in Pipedrive showing a follow-up email and a scheduled SMS bump activity created by the system" loading="lazy"><figcaption><b>A follow-up email and the next scheduled touch,</b> an SMS bump, on a Contacted-stage deal. Customer details masked.</figcaption></figure>
+  </div>
+ </div>
+
+ <div class="group">
+  <div class="eyebrow">02 &middot; Show</div>
+  <h3 class="gt">Nobody buys a custom inflatable they cannot picture.</h3>
+  <div class="lev">
+   <div>
+    <h4><i>Leverage point 3</i>3 concept images with every quote</h4>
+    <div class="ba">
+     <div><b>Before</b>Describe it in words, or spend 20 minutes building a mockup by hand in an image tool.</div>
+     <div class="now"><b>Now</b>From the call, the form and the reference photo, the system generates 3 branded concepts using 3 image models from 2 providers, embeds them in the quote email, and saves the email as a draft in the CRM. The customer's original reference photo stays on the quote itself, so a regenerated concept never changes the price document.</div>
+    </div>
+    <div class="why"><b>Why it converts.</b> The conversation changes from &ldquo;can you describe it again&rdquo; to &ldquo;I like number 3, can the logo go here.&rdquo;</div>
+   </div>
+   <figure class="shot"><img src="assets/quote-email.png" alt="A quote email drafted in Pipedrive for an inflatable finish-line arch, with examples link and concept image" loading="lazy"><figcaption><b>Real quote email draft, May 2026.</b> Project-specific copy, a link to similar past projects, and the concept images below. Customer details and private links masked.</figcaption></figure>
+  </div>
+  <div class="trio">
+   <figure><img src="assets/concept-arch.jpg" alt="Generated concept of a branded inflatable finish-line arch over a go-kart race" loading="lazy"><figcaption>Generated concept: a branded finish-line arch for a kart club</figcaption></figure>
+   <figure><img src="assets/concept-mascot.jpg" alt="Generated concept of a 5-foot inflatable mascot dog holding a branded bag in an office lobby" loading="lazy"><figcaption>Generated concept: a 5-foot mascot for an insurance agency</figcaption></figure>
+   <figure><img src="assets/concept-container.jpg" alt="Generated concept of an inflatable shipping container replica on a trade show floor" loading="lazy"><figcaption>Generated concept: a product replica for a trade show</figcaption></figure>
+  </div>
+  <p class="note" style="margin-top:12px">These are design concepts generated for real quotes, not photographs of delivered products, and not endorsements by the organizations shown.</p>
+  <div class="mini" style="margin-top:28px">
+   <div><h4>Leverage point 4: real project photos, found for you</h4><p>A categorized catalog of past projects. The system selects examples that match the product type and links them from the email, so the customer sees proof it has been built before.</p></div>
+  </div>
+ </div>
+
+ <div class="group">
+  <div class="eyebrow">03 &middot; Quote</div>
+  <h3 class="gt">From a call to a priced, published quote in minutes.</h3>
+  <div class="lev">
+   <div>
+    <h4><i>Leverage point 5</i>Call transcript to quote: where it started</h4>
+    <div class="ba">
+     <div><b>Before</b>After a call, remember everything the customer wanted and fill a quote template line by line: product, size, material, quantity, price, add-ons. 10 to 15 minutes per quote, and it was the first thing to slip on a busy day.</div>
+     <div class="now"><b>Now</b>The first tool, live in March 2026, was a transcript parser: paste the call transcript, get the quote note, the follow-up email and the image prompt. It chose between a standard quote and an options quote automatically from what was still open at the end of the call. Its success is what justified building everything else.</div>
+    </div>
+    <div class="why"><b>Why it converts.</b> The quote goes out the same day as the call, while the customer still remembers the conversation.</div>
+   </div>
+   <figure class="shot narrow"><img src="assets/quote-form-before.png" alt="The old manual quote note template with empty fields for description, size, material, quantity and unit price" loading="lazy"><figcaption><b>Before: the manual quote template.</b> Every field typed by hand after every call. Customer details masked.</figcaption></figure>
+  </div>
+  <div class="lev flip" style="margin-top:44px">
+   <div>
+    <h4><i>Leverage point 6</i>Standard and options quote pages, generated and published</h4>
+    <div class="ba">
+     <div><b>Before</b>A text quote in a CRM note, formatted by hand, with no pictures.</div>
+     <div class="now"><b>Now</b>One run gathers the deal, applies the pricing rules, generates the concept images, builds a standard or options quote page with its own link, attaches it to the deal, and drafts the email. Quantity tiers, add-ons, materials and production timelines come from a single pricing source, so every quote is consistent.</div>
+    </div>
+    <div class="why"><b>Why it converts.</b> A clear, professional quote with pictures is easier to say yes to, and easier to forward to whoever signs off.</div>
+    <span class="kpi"><b>687</b>quote analyses run by the system, May to September</span>
+   </div>
+   <figure class="shot narrow"><img src="assets/quote-page.png" alt="A generated options quote page with product thumbnails, quantity pricing, add-ons and total" loading="lazy"><figcaption><b>After: a generated quote page, July 2026.</b> Product thumbnails from the concept images, pricing tiers, add-ons and payment options. Customer details masked.</figcaption></figure>
+  </div>
+  <div class="lev" style="margin-top:44px">
+   <div>
+    <h4><i>Leverage point 7</i>One searchable quote database</h4>
+    <div class="ba">
+     <div><b>Before</b>Quotes lived inside individual deals. Finding &ldquo;the arch we did for the brewery&rdquo; meant remembering the deal and scrolling.</div>
+     <div class="now"><b>Now</b>Every quote lands in one index: company, contact, salesperson, product, material, quote type and deal. Searchable in seconds. By September it held 618 quotes and other reps were using it too.</div>
+    </div>
+    <div class="why"><b>Why it converts.</b> Repeat customers and &ldquo;same as that one&rdquo; requests get answered on the spot.</div>
+    <span class="kpi"><b>618</b>quotes in the shared database by September 9</span>
+   </div>
+   <figure class="shot"><img src="assets/quote-index.png" alt="The central quote index listing quotes by date, salesperson, organization, contact, quote type, line items and materials" loading="lazy"><figcaption><b>The quote index.</b> Names blurred.</figcaption></figure>
+  </div>
+ </div>
+
+ <div class="group">
+  <div class="eyebrow">04 &middot; Follow up</div>
+  <h3 class="gt">Nothing slips, and the phone gets picked up.</h3>
+  <div class="mini">
+   <div><h4>Leverage point 8: follow-up that runs on evidence</h4><p>Each stage has a cadence. Contacted: business day 1, 4, 7 and 10. Quote sent: day 1, 3, 6 and 13. Negotiation and Closing run slower, and the day-10 email politely closes the loop. Sends happen only in the windows that historically got replies: weekdays, 11:00 to 19:00, Tuesday and Wednesday best, never weekends, at most 1 automated send per deal per day. A reply stops the sequence. A 20% holdout keeps the measurement honest. Drafts wait for Brooks's review under a &ldquo;Hammock&rdquo; label.</p><span class="kpi"><b>1,332</b>follow-up drafts written</span></div>
+   <div><h4>Leverage point 9: &ldquo;Call or text the prospect&rdquo;</h4><p>24 hours after a lead arrives with a quote but no conversation, the system creates 1 activity for Brooks: call or SMS. In the Closing stage, the day-7 touch is a phone nudge, not another email. Email closes sales; a phone call builds the relationship. This reminder is the piece Brooks credits most.</p></div>
+   <div><h4>Leverage point 10: watchdogs on every promise</h4><p>Every open deal is checked for a next activity. Every inbound email is checked against a 20-hour reply deadline, with weekend arrivals due Monday at 8:00. Every business promise (a lead answered, a quote sent, a handoff done) is checked every 15 minutes. Labels on the board (Hammock, Football, META, Generic) say what needs a human and what the deadline flag means.</p></div>
+  </div>
+  <figure class="shot"><img src="assets/pipeline-board.png" alt="The Pipedrive pipeline board with Lead Received, Contacted, Quote Sent, Negotiation and Closing columns, deal cards blurred" loading="lazy"><figcaption><b>The board the watchdogs read.</b> 75 open deals across 5 stages on the day of the first pilot, April 2026. Deal cards blurred.</figcaption></figure>
+ </div>
+
+ <div class="group">
+  <div class="eyebrow">05 &middot; Hand off</div>
+  <h3 class="gt">The sale becomes a production brief without rewriting it.</h3>
+  <div class="lev">
+   <div>
+    <h4><i>Leverage point 11</i>Deal synthesis and call transcription</h4>
+    <div class="ba">
+     <div><b>Before</b>The story of a deal lived in Brooks's head and across emails, texts, calls and files.</div>
+     <div class="now"><b>Now</b>Calls are transcribed into the deal. A Project Vision &amp; Summary note keeps the client background, product specs, intended use, deadline and shipping details current as the deal changes, so every later step (the quote, the reply, the handoff) starts from the same facts.</div>
+    </div>
+    <span class="kpi"><b>2,133</b>deal syntheses run by the system</span>
+   </div>
+   <figure class="shot"><img src="assets/handoff-note.png" alt="A won deal in Pipedrive with the Create Asana Card activity and the Project Vision and Summary note listing specs, dimensions, deadline and delivery details" loading="lazy"><figcaption><b>Real handoff, May 2026.</b> The Project Vision &amp; Summary on a won deal: specs, dimensions, deadline and delivery, ready for the production card. Names masked.</figcaption></figure>
+  </div>
+  <div class="lev flip" style="margin-top:44px">
+   <div>
+    <h4><i>Leverage point 12</i>Handoff to customer service and engineering</h4>
+    <div class="ba">
+     <div><b>Before</b>Rewrite the whole deal for the Asana card, then write the customer a handoff email, then answer the shipping question.</div>
+     <div class="now"><b>Now</b>The production card is built from the deal and kept updated as the stage changes, with the chosen concept images attached. When the invoice is paid, a handoff email with the shipping estimate goes out. Won-deal labels are cleaned up, and an audit checks that every won deal actually got its card.</div>
+    </div>
+    <div class="why"><b>Why it matters.</b> Customer service and engineering start with the customer's actual decisions, not a reconstruction, and the customer feels a clean transition.</div>
+    <span class="kpi"><b>256</b>won-deal handoffs prepared, August to September</span>
+   </div>
+   <figure class="shot"><img src="assets/quote-ready-note.png" alt="A deal timeline in Pipedrive showing an automated Quote Ready To Send note and a Project Vision and Summary note posted by the automation" loading="lazy"><figcaption><b>The audit trail on a deal.</b> Quote-ready note with its link, the Project Vision &amp; Summary, and stage changes, each posted by the automation and timestamped. Links and names masked.</figcaption></figure>
+  </div>
+ </div>
+</div></section>
+
+<section id="numbers" class="dark"><div class="wrap">
+ <div class="eyebrow">By the numbers</div>
+ <h2 style="max-width:800px">What 23 weeks of production looked like, from the system's own ledgers.</h2>
+ <div class="stats">
+  <div class="stat"><b>9,103</b><p>AI calls to run the pipeline, May 11 to September 18</p><span>Usage ledger</span></div>
+  <div class="stat"><b>1,004</b><p>first-response emails drafted</p><span>Usage ledger</span></div>
+  <div class="stat"><b>2,294</b><p>reply and follow-up drafts written for review</p><span>Usage ledger</span></div>
+  <div class="stat"><b>4.3x</b><p>outbound email volume, February to June (204 to 872 a month), in fewer hours</p><span>Email archive</span></div>
+  <div class="stat"><b>40</b><p>scheduled jobs on weekday and business-hour rules</p><span>Server schedule</span></div>
+  <div class="stat"><b>14,148</b><p>tracked work items on the repair board, 99.8% closed</p><span>Paperclip database</span></div>
+  <div class="stat"><b>3,205</b><p>code commits, with 789 written handoff and audit records</p><span>Git history</span></div>
+  <div class="stat"><b>$25.59</b><p>a month for the cloud server that ran all of it</p><span>Hosting receipts</span></div>
+ </div>
+ <p class="note" style="margin-top:34px">AI calls counted from the automation's usage ledger, which began on May 11; the quote pipeline ran on a separate path before that. Work items include scheduled routine runs as well as repair tickets. AI models ran on 2 flat-rate subscriptions plus a metered image service, so the server line is the only monthly infrastructure bill.</p>
+</div></section>
+
+<section id="how"><div class="wrap">
+ <div class="eyebrow">How it runs with no API</div>
+ <h2>One always-on browser in the cloud, driven like a person would.</h2>
+ <p class="lede">Pipedrive gave us no API. So the system uses the same screens a salesperson uses, on a small cloud server, with a private connection, on a schedule, with every result checked in the CRM before a job is allowed to finish.</p>
+ <div class="arch">
+  <svg viewBox="0 0 960 430" role="img" aria-label="Architecture diagram: Brooks's laptop connects over Tailscale to a Hetzner cloud server that runs scheduled jobs, workers, a shared browser lock, one logged-in Chrome browser, a Paperclip repair board and watchdogs; the browser drives Pipedrive, and workers also reach Asana, Slack and the AI models">
+   <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b7772"/></marker></defs>
+   <!-- laptop -->
+   <rect x="20" y="150" width="150" height="86" rx="10" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="95" y="184" text-anchor="middle" font-size="14" font-weight="600" fill="#14231d">Brooks&rsquo;s laptop</text>
+   <text x="95" y="204" text-anchor="middle" font-size="12" fill="#6b7772">review drafts, send,</text>
+   <text x="95" y="220" text-anchor="middle" font-size="12" fill="#6b7772">make the calls</text>
+   <!-- tailscale -->
+   <line x1="170" y1="193" x2="238" y2="193" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)" marker-start="url(#ah)"/>
+   <text x="204" y="180" text-anchor="middle" font-size="11.5" fill="#b08a4a" font-weight="600">TAILSCALE</text>
+   <text x="204" y="214" text-anchor="middle" font-size="11" fill="#6b7772">private network</text>
+   <!-- VPS -->
+   <rect x="240" y="30" width="450" height="370" rx="12" fill="#fff" stroke="#1f4d3a" stroke-width="1.5"/>
+   <text x="262" y="58" font-size="14" font-weight="600" fill="#1f4d3a">Cloud server (Hetzner, Ubuntu)</text>
+   <text x="262" y="76" font-size="12" fill="#6b7772">$25.59 a month &middot; up 142 days at last check</text>
+   <rect x="262" y="94" width="196" height="58" rx="8" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="360" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">40 scheduled jobs</text>
+   <text x="360" y="136" text-anchor="middle" font-size="11.5" fill="#6b7772">systemd timers, ET business hours</text>
+   <rect x="472" y="94" width="196" height="58" rx="8" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="570" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">Python workers</text>
+   <text x="570" y="136" text-anchor="middle" font-size="11.5" fill="#6b7772">one job per customer promise</text>
+   <line x1="360" y1="152" x2="360" y2="176" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <line x1="570" y1="152" x2="570" y2="176" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <rect x="262" y="178" width="406" height="46" rx="8" fill="#e6efe9" stroke="#2f6b52"/>
+   <text x="465" y="198" text-anchor="middle" font-size="13" font-weight="600" fill="#1f4d3a">Shared browser lock</text>
+   <text x="465" y="214" text-anchor="middle" font-size="11.5" fill="#3b4a44">one job drives the browser at a time; the rest queue</text>
+   <line x1="465" y1="224" x2="465" y2="246" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <rect x="262" y="248" width="406" height="58" rx="8" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="465" y="272" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">One Chrome browser, logged in to the CRM</text>
+   <text x="465" y="290" text-anchor="middle" font-size="11.5" fill="#6b7772">persistent profile &middot; driven over the DevTools protocol &middot; viewable over VNC</text>
+   <rect x="262" y="326" width="196" height="56" rx="8" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="360" y="349" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">Paperclip repair board</text>
+   <text x="360" y="367" text-anchor="middle" font-size="11.5" fill="#6b7772">tickets, agents, evidence (Postgres)</text>
+   <rect x="472" y="326" width="196" height="56" rx="8" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="570" y="349" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">Watchdogs and ledgers</text>
+   <text x="570" y="367" text-anchor="middle" font-size="11.5" fill="#6b7772">promises, outcomes, usage, health</text>
+   <!-- right side -->
+   <line x1="668" y1="277" x2="758" y2="277" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <rect x="760" y="248" width="180" height="58" rx="10" fill="#1f4d3a"/>
+   <text x="850" y="273" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">Pipedrive CRM</text>
+   <text x="850" y="292" text-anchor="middle" font-size="11.5" fill="#c9d1cc">web interface only, no API</text>
+   <line x1="690" y1="120" x2="758" y2="120" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <rect x="760" y="92" width="180" height="56" rx="10" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="850" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">AI models</text>
+   <text x="850" y="133" text-anchor="middle" font-size="11.5" fill="#6b7772">Claude &middot; Codex &middot; Gemini images</text>
+   <line x1="690" y1="190" x2="758" y2="190" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <rect x="760" y="166" width="180" height="48" rx="10" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="850" y="186" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">Asana</text>
+   <text x="850" y="203" text-anchor="middle" font-size="11.5" fill="#6b7772">production cards</text>
+   <line x1="690" y1="360" x2="758" y2="360" stroke="#6b7772" stroke-width="1.5" marker-end="url(#ah)"/>
+   <rect x="760" y="338" width="180" height="48" rx="10" fill="#f7f4ee" stroke="#ddd6c8"/>
+   <text x="850" y="358" text-anchor="middle" font-size="13" font-weight="600" fill="#14231d">Slack</text>
+   <text x="850" y="375" text-anchor="middle" font-size="11.5" fill="#6b7772">only when a human must act</text>
+  </svg>
+  <p class="cap">The whole stack. Brooks never ran a browser on his own machine for this; every CRM action happened on the server, and he reviewed the results in his normal CRM login.</p>
+ </div>
+ <div class="plain">
+  <div><h4>Cloud server + Tailscale</h4><p>A small Hetzner virtual server, always on, so the work never depended on a laptop being open. Tailscale gives private access to it and routes its traffic through Brooks's home connection, so the CRM sees 1 trusted login location instead of a data-center address that triggers CAPTCHAs.</p></div>
+  <div><h4>One browser, one lock</h4><p>The CRM allows 3 logged-in devices, so every job shares a single Chrome profile. Each job must hold a lock before touching it, so 2 jobs never fight over the same screen. When the queue got busy, the fix was to poll less, not to add a second browser.</p></div>
+  <div><h4>Verified outcomes</h4><p>A job is done only when the email, note, activity or card is confirmed present on a fresh load of the record. A script that ran without errors proves nothing; a saved draft that vanished on reload is a failure.</p></div>
+  <div><h4>Scheduled on business rules</h4><p>Jobs run on Eastern time, on weekdays, inside the hours customers reply. Overnight leads are held for an 8:00 release. Weekends are quiet on purpose.</p></div>
+  <div><h4>A repair board for AI agents</h4><p>Paperclip tracks every failure as a ticket with evidence. Agents pick tickets up under a governor: a working window, daily wake limits, and no duplicate tickets for one cause.</p></div>
+  <div><h4>Deployed like software</h4><p>Everything lives in Git. The server pulls tagged releases, a drift check runs 4 times a day, and a rollback is one command. 3,205 commits over 6 months.</p></div>
+ </div>
+
+ <h3 style="margin-top:64px">A weekday on the server, Eastern time</h3>
+ <p class="note">The main scheduled jobs. Each one reads the CRM, does its narrow task, verifies the result and releases the browser. Minute-level jobs back off automatically when they keep finding nothing.</p>
+ <div class="clockbox"><div class="clock">
+  <div class="crow"><div class="lab">Deferred repair drain, issue triage<small>06:05, 07:15</small></div><div class="track"><span class="pt" style="grid-column:1/2"></span><span class="pt" style="grid-column:3/4"></span></div></div>
+  <div class="crow"><div class="lab">Architect review of the fleet<small>07:00, then 11:00 and 15:00 catch-ups</small></div><div class="track"><span class="pt" style="grid-column:3/4"></span><span class="pt" style="grid-column:11/12"></span><span class="pt" style="grid-column:19/20"></span></div></div>
+  <div class="crow"><div class="lab">New-lead sweep<small>every minute, 07:30 to 21:00</small></div><div class="track"><span class="bar" style="grid-column:4/31"></span></div></div>
+  <div class="crow"><div class="lab">First-response release<small>08:00 to 08:30</small></div><div class="track"><span class="bar" style="grid-column:5/7"></span></div></div>
+  <div class="crow"><div class="lab">Inbound email check<small>every minute, adaptive</small></div><div class="track"><span class="bar lt" style="grid-column:1/35"></span></div></div>
+  <div class="crow"><div class="lab">Quote-send sweep<small>every 30 minutes, 08:00 to 21:00</small></div><div class="track"><span class="bar" style="grid-column:5/31"></span></div></div>
+  <div class="crow"><div class="lab">Production card sync<small>every 5 minutes, 08:00 to 21:00</small></div><div class="track"><span class="bar" style="grid-column:5/31"></span></div></div>
+  <div class="crow"><div class="lab">Won-deal handoff<small>every 10 minutes, 08:00 to 20:00; hourly overnight</small></div><div class="track"><span class="bar lt" style="grid-column:1/35"></span><span class="bar" style="grid-column:5/29;position:absolute;left:0;right:0;width:auto"></span></div></div>
+  <div class="crow"><div class="lab">Activity and expected-close checks<small>hourly, 08:00 to 19:00</small></div><div class="track"><span class="bar" style="grid-column:5/27"></span></div></div>
+  <div class="crow"><div class="lab">Business-promise watchdog<small>every 15 minutes, all day</small></div><div class="track"><span class="bar lt" style="grid-column:1/35"></span></div></div>
+  <div class="crow"><div class="lab">Repair audit<small>every 2 hours</small></div><div class="track"><span class="pt" style="grid-column:4/5"></span><span class="pt" style="grid-column:8/9"></span><span class="pt" style="grid-column:12/13"></span><span class="pt" style="grid-column:16/17"></span><span class="pt" style="grid-column:20/21"></span><span class="pt" style="grid-column:24/25"></span><span class="pt" style="grid-column:28/29"></span><span class="pt" style="grid-column:32/33"></span></div></div>
+  <div class="crow"><div class="lab">Model liveness probe<small>every 4 hours, both providers</small></div><div class="track"><span class="pt" style="grid-column:5/6"></span><span class="pt" style="grid-column:13/14"></span><span class="pt" style="grid-column:21/22"></span><span class="pt" style="grid-column:29/30"></span></div></div>
+  <div class="crow"><div class="lab">Follow-up drafts for tomorrow<small>20:00 and 23:00</small></div><div class="track"><span class="pt" style="grid-column:29/30"></span><span class="pt" style="grid-column:34/35"></span></div></div>
+  <div class="hours"><div></div><div class="track"><span>06:00</span><span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span><span>18:00</span><span>20:00</span><span style="grid-column:span 2">22:00</span></div></div>
+ </div></div>
+</div></section>
+
+<section id="repair" class="alt"><div class="wrap">
+ <div class="eyebrow">Why it kept working</div>
+ <h2>Driving a screen is harder than calling an API. So the system repairs itself.</h2>
+ <p class="lede">Buttons move. A draft can look saved and not be. A model can hit its usage limit at 9:00 on a Monday. The answer was not to babysit it. It was a repair loop with 3 separate roles, strict budgets, and one rule above all others.</p>
+ <div class="quotes">
+  <div class="q">&ldquo;Causes are unbounded. Promises are finite.&rdquo;<small>Watchdog doctrine: check whether each customer promise was kept, not whether the code ran</small></div>
+  <div class="q">&ldquo;No audit is complete without a live smoke test. Reading code proves the fix was written; only production state proves it works.&rdquo;<small>Auditor contract</small></div>
+  <div class="q">&ldquo;A failed click is not a defect and must never become a ticket.&rdquo;<small>Reliability rule, August 2026</small></div>
+ </div>
+ <ol class="loop">
+  <li><b>Job verifies itself</b>Reloads the record and checks the email, note or card is really there.</li>
+  <li><b>Ticket opened</b>Not verified? One Paperclip ticket with the evidence, deduplicated against open tickets for the same cause.</li>
+  <li><b>QA bot</b>Reads the rule, the run evidence and the code. Diagnoses. Writes a short fix proposal with the hardest regression case.</li>
+  <li><b>Architect</b>Approves or revises the proposal. Traces the failure to its origin and checks what else the change touches.</li>
+  <li><b>Fix, test, deploy</b>Proves the regression fails on the old code, passes on the new, ships through Git.</li>
+  <li><b>Rerun the original</b>The failed job runs again on the same deal. Still missing? The ticket stays open.</li>
+  <li><b>Auditor</b>A separate, independent review of the diff and the live outcome. Then, and only then, closed.</li>
+ </ol>
+ <ul class="rules">
+  <li><b>Bounded retries.</b> At most 2 safe UI attempts and 3 repair iterations per incident. Exhausted work gets an owner and a deadline; it is never silently dropped.</li>
+  <li><b>Wake budgets.</b> The governor allows 40 cheap triage wakes and 6 expensive repair wakes per working day, inside a 06:00 to 20:00 weekday window. Nothing wakes on a weekend.</li>
+  <li><b>One ticket per cause.</b> A shared outage creates one parent incident, not one ticket per failed job. Recurrences increment the same ticket.</li>
+  <li><b>Quiet notifications.</b> Retries, browser contention, model switching and successful recovery stay on the board. A human is messaged only for something only a human can do: a login, a business decision.</li>
+  <li><b>Cheap models by default.</b> Drafting, extraction, bounded QA and triage run on the routine tier. The advanced tier is reserved for architecture, hard repairs and independent review.</li>
+  <li><b>No model calls for nothing.</b> Empty queues, routine clicks and unchanged evidence never wake a model. Context is passed compact and cached.</li>
+ </ul>
+ <h3 style="margin-top:60px">6 things that broke, and what the loop did about them</h3>
+ <div class="inc">
+  <div><h4>The Send button that did not click</h4><p><b>Symptom.</b> June. A first-response draft would save, the Send button looked enabled, and the email never went out. It recurred 3 times in 10 days despite 2 patches.</p><p><b>Cause.</b> The job clicked the button from inside the page's script, which the CRM's framework silently ignored. Failures were piped to nowhere, so the QA bot never saw them.</p><p><b>Fix.</b> A real mouse click, a second attempt, and a read-back that confirms the composer closed. Failures became visible tickets. A send guarantee retries until the email is verified in the thread or the deal is parked for a human, never silently dropped.</p></div>
+  <div><h4>Monday morning, model out of quota</h4><p><b>Symptom.</b> June 29. A full Monday of first responses sat unsent, every deal flipped to a manual-review label.</p><p><b>Cause.</b> The model that checks each draft hit its quota, and &ldquo;check unavailable&rdquo; was treated as &ldquo;do not send,&rdquo; quietly.</p><p><b>Fix.</b> The check became provider-agnostic with an automatic fallback to the other model, and &ldquo;unavailable&rdquo; now means retry, not park. 11 deals were recovered and sent the same day. Direct metered API billing was switched off for good the same week.</p></div>
+  <div><h4>&ldquo;Fixed&rdquo; that was not fixed</h4><p><b>Symptom.</b> June 24. The architect reported a won deal's production card repaired because the automation returned &ldquo;already exists.&rdquo; Brooks opened the CRM: the card was still stale, missing the dimensions.</p><p><b>Cause.</b> A fuzzy matcher accepted any old card as current.</p><p><b>Fix.</b> A required-values gate: quantity, design, dimensions, material and air type must be visibly present before a card counts. And a rule now written into every audit: &ldquo;already exists&rdquo; is a weak signal, and the author's summary is a claim, not proof.</p></div>
+  <div><h4>The browser was busy finding nothing</h4><p><b>Symptom.</b> Mid-August. The shared browser was held 13.7 hours of every 24. Jobs queued behind each other; 12 repair tickets in 4 days, each correctly fixing its own job, none fixing the class.</p><p><b>Cause.</b> The inbox check took the browser 825 times a day and found nothing 8 times out of 9. The new-lead sweep scraped the board 512 times in a day to find a deal 3 times.</p><p><b>Fix.</b> Measure the shared resource, then cut demand: an adaptive poll gate that backs off when a queue keeps coming back empty, and a shared board snapshot so readers skip re-scraping. No second browser. Earlier, in July, the lock itself was changed to fail closed after 1,789 logged cases of jobs proceeding unlocked.</p></div>
+  <div><h4>581 tickets against 20 deals</h4><p><b>Symptom.</b> August 26. 581 repair tickets in 14 days, touching only 20 deals. Brooks: &ldquo;Pipedrive has made one UI update in six months. Stop filing bugs. Take a screenshot, see what is on the page, and click what is necessary.&rdquo;</p><p><b>Cause.</b> An audit found 354 blind wait-then-count patterns and 0 uses of the browser library's own auto-retrying checks, so a menu still rendering was read as a permanent failure.</p><p><b>Fix.</b> A resilient wrapper around every browser action: screenshot, diagnose, retry. Every error type now declares itself transient or real, and only real ones become tickets.</p></div>
+  <div><h4>The watchdog that paged itself to death</h4><p><b>Symptom.</b> August 1. 15 duplicate critical tickets for the same 4 deals in 3.5 hours, and 2 pages to Brooks in 24 hours asking why the server could not fix its own alerts.</p><p><b>Cause.</b> The watchdog's own timeout was shorter than its worst-case run, so it was killed after filing a ticket and before saving the state that would have suppressed the duplicate.</p><p><b>Fix.</b> Save state before paging, a longer timeout with graceful shutdown, and one escalation clock per fault and subject instead of one global clock. Out of this came a dedicated repair agent for infrastructure tickets, and a standing rule: never page a human about a purely technical failure.</p></div>
+ </div>
+ <h3 style="margin-top:60px">Switching models without rewriting the business</h3>
+ <p class="lede" style="font-size:17px">Every AI task is a named surface with a tier. A profile decides which provider runs each surface, and 1 command moves the whole fleet. The tier never changes with the profile, so a switch changes who does the work, not how much thinking it gets.</p>
+ <div class="tscroll"><table class="prof">
+  <tr><th>Surface</th><th>Tier</th><th>Profile: claude</th><th>Profile: mixed</th><th>Profile: codex</th></tr>
+  <tr><td>Customer email copy, quote analysis, reply drafts</td><td>Routine</td><td><em>Claude Sonnet</em></td><td><em>Claude Sonnet</em></td><td>Codex, routine model</td></tr>
+  <tr><td>Bounded QA, image checks, handoff synthesis</td><td>Routine</td><td><em>Claude Sonnet</em></td><td>Codex, routine model</td><td>Codex, routine model</td></tr>
+  <tr><td>Architect review, morning fleet review</td><td>Advanced</td><td><em>Claude Opus</em></td><td><em>Claude Opus</em></td><td>Codex, advanced model</td></tr>
+  <tr><td>General repair agent</td><td>Advanced</td><td><em>Claude Opus</em></td><td>Codex, advanced model</td><td>Codex, advanced model</td></tr>
+  <tr><td>Concept image generation</td><td>Advanced</td><td>Codex image model</td><td>Codex image model</td><td>Codex image model</td></tr>
+ </table></div>
+ <p class="note" style="margin-top:14px">Over the 23 weeks the ledger shows 8 model versions across 2 providers, 64% of calls on Anthropic models and 36% on OpenAI models, plus Google image models for concepts. The fleet moved from the mixed profile to all-Claude on August 20 with 1 command.</p>
+</div></section>
+
+<section id="accounting"><div class="wrap">
+ <div class="eyebrow">What this means for a tax and CAS firm</div>
+ <h2>The tools change. The pattern does not.</h2>
+ <p class="lede">Custom manufacturing is not accounting. But every firm has the same shape of problem: repeated work between the steps, a client waiting for an answer, a missing item nobody chased, and a handoff that loses context. This is what the same leverage points look like in a firm.</p>
+ <div class="tscroll"><table class="cmp">
+  <tr><th>At Custom Inflatables</th><th>In a tax + CAS firm</th><th>What it buys</th></tr>
+  <tr><td>Inquiry answered in minutes with a project-specific reply</td><td>New-client inquiries and document requests answered the same hour, from the client file</td><td>Faster intake, fewer lost prospects</td></tr>
+  <tr><td>Call transcript to quote in minutes</td><td>Discovery call to draft engagement letter and fixed-fee proposal</td><td>Proposals go out the same day</td></tr>
+  <tr><td>Stage-based follow-up with tested send windows</td><td>Missing-document chasing on a cadence, stopped the moment the client responds</td><td>Fewer extensions caused by late documents</td></tr>
+  <tr><td>&ldquo;Call the prospect&rdquo; reminders</td><td>Partner check-in calls scheduled from client events, not memory</td><td>Retention and advisory upsell</td></tr>
+  <tr><td>Watchdogs on every open deal and reply deadline</td><td>Watchdogs on every return, every open request and every unanswered client email</td><td>Nothing slips in busy season</td></tr>
+  <tr><td>Deal synthesis into a Project Vision &amp; Summary</td><td>Client context assembled from emails, calls and the portal into one current brief</td><td>Any team member can pick up the file</td></tr>
+  <tr><td>Handoff card to production when the invoice is paid</td><td>Onboarding handoff to bookkeeping or tax teams when the engagement is signed</td><td>Clean transitions, no re-interviewing the client</td></tr>
+  <tr><td>Works through the CRM screen, no API needed</td><td>Works with the tax, practice-management and portal tools the firm already runs, API or not</td><td>No platform migration required</td></tr>
+ </table></div>
+ <p class="note" style="margin-top:16px">Accounting applications are prospective and depend on the firm's tools, access, privacy obligations and professional review. Keelwater's founding design partners are where these are being measured.</p>
+</div></section>
+
+<section id="timeline" class="alt"><div class="wrap">
+ <div class="two">
+  <div>
+   <div class="eyebrow">Timeline</div>
+   <h2>Built while doing the job, in 7 months.</h2>
+   <p class="lede">No engineering team. One salesperson, AI coding agents, and a rule that nothing counts until it is verified in the CRM.</p>
+  </div>
+  <ol class="tl">
+   <li><b>February 2026</b><span>Brooks joins Custom Inflatables as a product specialist. February close rate: 10.5%.</span></li>
+   <li><b>March 14</b><span>Cloud server provisioned. First tool in use: the transcript parser that turns a call into a quote, an email and an image prompt. Early one-off scripts prove the idea but not the reliability.</span></li>
+   <li><b>March 26</b><span>Code repository created. From here every change is versioned and reversible.</span></li>
+   <li><b>April 16 to 22</b><span>Pilot: 8 deals scraped and followed up through the CRM screen. Then, in 1 week, the orchestrator, the Paperclip repair board and the follow-up engine are built.</span></li>
+   <li><b>April 27 to 28</b><span>Tailscale routing ends the daily CAPTCHA wall. The cloud server becomes the standing home for every CRM action.</span></li>
+   <li><b>May 1 to 28</b><span>Stage-based cadence takes effect. Automated first responses, follow-up drafts and deal synthesis go into production. All CRM work consolidates onto 1 shared browser.</span></li>
+   <li><b>June 11 to 22</b><span>The QA bot, architect and auditor roles are defined and the repair loop runs continuously from here. The first-response send guarantee ships. June close rate: 25.8%.</span></li>
+   <li><b>July 13</b><span>Business-promise watchdogs written into doctrine: check the promises to customers, not the machinery. Daily architect review of the whole fleet follows on July 27.</span></li>
+   <li><b>August 1 to 20</b><span>Dedicated repair agent, call transcription, won-deal handoff emails. Fleet switched to all-Claude routing with 1 command on August 20.</span></li>
+   <li><b>September 18</b><span>Brooks's last day. Operations paused, not shut down. Leaderboard: #1 of 17 active reps at 20.5%.</span></li>
+  </ol>
+ </div>
+</div></section>
+
+<section id="sources"><div class="wrap">
+ <div class="eyebrow">Sources and method</div>
+ <h2>Where each number comes from.</h2>
+ <ul class="srcs">
+  <li><b>Close rate by month.</b> The company's accounting workbook through June 2026, PS Stats sheet: new orders divided by new leads, February 10.5%, March 17.1%, April 23.0%, May 23.4%, June 25.8%; 107 new orders on 527 adjusted leads through June, ranked first of the 20 reps listed. July 24.1% and August about 22.5% are Brooks's figures from the monthly reports.</li>
+  <li><b>Leaderboard.</b> The company's sales dashboard, January 1 to September 30, 2026, 17 active reps: rank 1, 20.5% conversion, 791 leads, 167 won. Brooks's last day was September 18, so the period is effectively through mid-September.</li>
+  <li><b>First-response reply rate.</b> An export of the sales mailbox, February 5 to July 29, 2026: 388 emails classified as first responses by their structure, 189 replied to (48.7% overall). Manual months February to April: 26 of 71 (37%). July, fully automated: 73 of 123 (59%). A reply is counted before the next outbound touch. This is an observed trend in one mailbox, not a controlled experiment. The same export shows 32 customers thanking Brooks by name for a quick response, and, across 983 answered inquiries, a 47.8% win rate when the answer came within an hour against 24.8% after 3 days.</li>
+  <li><b>Response speed.</b> The company's CRM activity log for Brooks's first-outreach tasks, February 3 to June 25, 2026, 325 leads: half completed within 2.2 hours, 9 in 10 within a day.</li>
+  <li><b>Hours and quote time.</b> Brooks's own estimates: roughly 10-hour days in busy season before, 4 to 8 hours in summer; 10 to 15 minutes per manual quote.</li>
+  <li><b>System counts.</b> The automation's usage ledger (9,103 AI calls, May 11 to September 18, by task), the Paperclip database (14,148 work items, 14,116 closed), the Git history (3,205 commits, 789 handoff and audit documents), the server's job schedule (40 timers), the quote index (618 quotes on September 9) and hosting receipts ($25.59 a month, July to September).</li>
+  <li><b>Screenshots.</b> Real CRM records and generated concepts from the project archive, with customer names, contact details and private links masked. Nothing was staged for this page.</li>
+ </ul>
+</div></section>
+
+<section id="contact" class="dark cta"><div class="wrap">
+ <div class="eyebrow">AI enablement for tax and CAS firms</div>
+ <h2>Where does your firm lose hours between the steps?</h2>
+ <p class="lede">Keelwater builds this kind of operating layer inside accounting firms, around the tools they already run, and measures the result before and after. Start with 1 workflow.</p>
+ <a class="btn btn-primary" style="background:#d4b37a;color:var(--ink)" href="mailto:hello@keelwater.com?subject=Design%20Partnership">Explore a Design Partnership</a>
+ <p class="note" style="margin:22px auto 0;text-align:center">Or email hello@keelwater.com</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <span>&copy; 2026 Keelwater &middot; Custom Inflatables founder case study</span>
+ <span>Keelwater is not a CPA firm and does not provide attest services.</span>
+</div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-label="Enlarged image"><button aria-label="Close" onclick="closeLb()">&times;</button><img alt=""></div>
+<script>
+(function(){
+ var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+ window.closeLb=function(){lb.classList.remove('open');lbi.src=''};
+ document.querySelectorAll('figure img').forEach(function(im){im.addEventListener('click',function(){lbi.src=im.src;lbi.alt=im.alt;lb.classList.add('open')})});
+ lb.addEventListener('click',function(e){if(e.target!==lbi)closeLb()});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb()});
+ var tip=document.getElementById('ctip'),svg=document.querySelector('svg.chart');
+ if(svg){svg.querySelectorAll('.bars rect').forEach(function(r){
+  r.addEventListener('mousemove',function(e){var b=svg.parentNode.getBoundingClientRect();tip.textContent=r.dataset.l+': '+r.dataset.v+' ('+r.dataset.s+')';tip.style.left=(e.clientX-b.left)+'px';tip.style.top=(e.clientY-b.top)+'px';tip.style.opacity=1});
+  r.addEventListener('mouseleave',function(){tip.style.opacity=0});
+ })}
+ var links=document.querySelectorAll('.subnav a'),secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute('href'))});
+ function onScroll(){var y=window.scrollY+160,cur=-1;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i});links.forEach(function(a,i){a.classList.toggle('on',i===cur)})}
+ window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+</body>
+</html>
