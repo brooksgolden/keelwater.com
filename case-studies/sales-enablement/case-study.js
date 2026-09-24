@@ -2,6 +2,7 @@ document.querySelectorAll('.bars button').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.bars button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     const detail = document.getElementById('month-detail');
+    detail.hidden = false;
     detail.replaceChildren();
     const label = document.createElement('b');
     label.textContent = `${button.dataset.month}: `;
