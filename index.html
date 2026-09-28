@@ -47,7 +47,7 @@ header.nav{position:sticky;top:0;z-index:10;background:rgba(247,244,238,.92);bac
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .mtrack{display:flex;align-items:center;gap:72px;width:max-content;padding-right:72px;animation:mq 30s linear infinite}
 .marquee:hover .mtrack{animation-play-state:paused}
-.mtrack img{height:26px;width:auto;opacity:.8;filter:grayscale(20%)}
+.mtrack img{height:26px;width:auto;opacity:.85;filter:grayscale(100%)}
 @keyframes mq{to{transform:translateX(-50%)}}
 section{padding:88px 0}
 .alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -140,7 +140,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .sv-panel{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px}
 .sv-lbl{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .sv-chips{display:flex;flex-wrap:wrap;gap:10px}
-.schip{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2)}
+.schip{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:7px}
+.schip img{height:14px;width:auto;filter:grayscale(100%);opacity:.8}
+.sv-band img{height:15px;width:auto;vertical-align:-2px;margin-right:7px}
 .sv-frag .schip{border-style:dashed;background:var(--white)}
 .sv-unified .sv-chips{justify-content:center}
 .sv-band{margin-top:16px;background:var(--green);color:var(--paper);border-radius:8px;padding:10px 16px;text-align:center;font-size:13.5px;font-weight:600;letter-spacing:.04em;position:relative}
@@ -157,7 +159,7 @@ footer .flinks a:hover{color:var(--ink)}
 
 <header class="nav"><div class="wrap">
  <a class="logo" href="#top"><img src="keel-mark.svg" width="32" height="32" alt="">Keelwater</a>
- <ul><li><a href="solutions.html">Solutions</a></li><li><a href="case-studies/">Case Studies</a></li><li><a href="#founder">About</a></li><li><a href="investors.html">Investors</a></li><li class="m-dp"><a href="#offers">Design Partnership</a></li></ul>
+ <ul><li><a href="#founder">About</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="case-studies/">Case Studies</a></li><li><a href="investors.html">Investors</a></li><li class="m-dp"><a href="#offers">Design Partnership</a></li></ul>
  <a class="btn btn-primary" href="#offers">Design Partnership</a>
  <button class="menu-btn" aria-label="Menu" aria-expanded="false" onclick="kwMenu()"><span></span><span></span><span></span></button>
 </div></header>
@@ -173,18 +175,18 @@ footer .flinks a:hover{color:var(--ink)}
   <div class="marquee"><div class="mtrack">
    <img src="drake.png" alt="Drake Software">
    <img src="lacerte.svg" alt="Lacerte">
-   <img src="ultratax.svg" alt="UltraTax CS by Thomson Reuters" style="height:44px">
-   <img src="cchaxcess.svg" alt="CCH Axcess by Wolters Kluwer" style="height:44px">
+   <img src="ultratax.svg" alt="UltraTax CS by Thomson Reuters" style="height:20px">
+   <img src="cchaxcess.svg" alt="CCH Axcess by Wolters Kluwer" style="height:20px">
    <img src="proconnect.svg" alt="ProConnect Tax">
-   <img src="taxdome.svg" alt="TaxDome" style="height:34px">
-   <img src="canopy.svg" alt="Canopy" style="height:34px">
+   <img src="taxdome.svg" alt="TaxDome">
+   <img src="canopy.svg" alt="Canopy">
    <img src="drake.png" alt="" aria-hidden="true">
    <img src="lacerte.svg" alt="" aria-hidden="true">
-   <img src="ultratax.svg" alt="" aria-hidden="true" style="height:44px">
-   <img src="cchaxcess.svg" alt="" aria-hidden="true" style="height:44px">
+   <img src="ultratax.svg" alt="" aria-hidden="true" style="height:20px">
+   <img src="cchaxcess.svg" alt="" aria-hidden="true" style="height:20px">
    <img src="proconnect.svg" alt="" aria-hidden="true">
-   <img src="taxdome.svg" alt="" aria-hidden="true" style="height:34px">
-   <img src="canopy.svg" alt="" aria-hidden="true" style="height:34px">
+   <img src="taxdome.svg" alt="" aria-hidden="true">
+   <img src="canopy.svg" alt="" aria-hidden="true">
   </div></div>
  </div>
 </div></section>
@@ -196,12 +198,12 @@ footer .flinks a:hover{color:var(--ink)}
  <div class="splitvis">
   <div class="sv-panel sv-frag">
    <div class="sv-lbl">Current state &middot; Good tools. Manual coordination.</div>
-   <div class="sv-chips"><span class="schip">Tax software</span><span class="schip">Practice management</span><span class="schip">QuickBooks</span><span class="schip">Email</span><span class="schip">Slack</span><span class="schip">Spreadsheets</span></div>
+   <div class="sv-chips"><span class="schip">Tax software</span><span class="schip">Practice management</span><span class="schip"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip">Email</span><span class="schip"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip">Spreadsheets</span></div>
   </div>
   <div class="sv-panel sv-unified">
    <div class="sv-lbl">With Keelwater &middot; Connected systems. Automated handoffs.</div>
-   <div class="sv-chips"><span class="schip">Tax software</span><span class="schip">Practice management</span><span class="schip">QuickBooks</span><span class="schip">Email</span><span class="schip">Slack</span><span class="schip">Spreadsheets</span></div>
-   <div class="sv-band">Keelwater operating layer<span>One workflow &middot; one current state &middot; human review</span></div>
+   <div class="sv-chips"><span class="schip">Tax software</span><span class="schip">Practice management</span><span class="schip"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip">Email</span><span class="schip"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip">Spreadsheets</span></div>
+   <div class="sv-band"><img src="keel-mark-inverse.svg" alt="">Keelwater operating layer<span>One workflow &middot; one current state &middot; human review</span></div>
   </div>
  </div>
  <ul class="list" style="max-width:760px;margin-top:36px">
@@ -346,4 +348,4 @@ function kwMenu(){document.body.classList.toggle('menu-open');var b=document.que
 document.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open')})})
 </script>
 </body>
-</html>
+                                                                                         </html>
