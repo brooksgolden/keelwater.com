@@ -85,7 +85,10 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:12px;max-width:760px}
 .status .st{display:inline-block;border:1px solid var(--brass);background:#fbf7ee;color:var(--ink-2);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:600}
 .flow{margin-top:18px;background:var(--paper);border:1px dashed var(--green-2);border-radius:10px;padding:16px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
 .flow .srcs{display:grid;gap:8px}
-.schip{border:1px solid var(--line);background:var(--white);border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--ink-2);text-align:center}
+.schip{border:1px solid var(--line);background:var(--white);border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--ink-2);text-align:center;display:inline-flex;align-items:center;gap:6px}
+.schip img{height:13px;width:auto;filter:grayscale(100%);opacity:.8}
+.flow .srcs{align-items:start}
+.flow .dst img{height:15px;width:auto;vertical-align:-3px;margin-right:5px}
 .flow .arr{color:var(--brass);font-size:20px;font-weight:600;text-align:center}
 .flow .dst{border:1.5px solid var(--green-2);background:#f3f6f2;border-radius:8px;padding:10px 12px;font-size:12.5px;font-weight:600;color:var(--green);text-align:center}
 .measure{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;align-items:center}
@@ -118,7 +121,7 @@ footer .flinks a:hover{color:var(--ink)}
 
 <header class="nav"><div class="wrap">
  <a class="logo" href="../index.html"><img src="../keel-mark.svg" width="32" height="32" alt="">Keelwater</a>
- <ul><li><a href="../solutions.html">Solutions</a></li><li><a class="on" href="./">Case Studies</a></li><li><a href="../index.html#founder">About</a></li><li><a href="../investors.html">Investors</a></li><li class="m-dp"><a href="../index.html#offers">Design Partnership</a></li></ul>
+ <ul><li><a href="../index.html#founder">About</a></li><li><a href="../solutions.html">Solutions</a></li><li><a class="on" href="./">Case Studies</a></li><li><a href="../investors.html">Investors</a></li><li class="m-dp"><a href="../index.html#offers">Design Partnership</a></li></ul>
  <a class="btn btn-primary" href="../index.html#offers">Design Partnership</a>
  <button class="menu-btn" aria-label="Menu" aria-expanded="false" onclick="kwMenu()"><span></span><span></span><span></span></button>
 </div></header>
@@ -137,7 +140,7 @@ footer .flinks a:hover{color:var(--ink)}
  <p class="framing"><b>Proof that the implementation capability already works.</b> This engagement was outside accounting, but the operating problem was the same: information lived across calls, CRM and delivery systems, and people manually moved context between them. The resulting AI-enabled workflow connected the systems and automated the handoffs end to end.</p>
  <p style="margin-top:18px"><span class="ind">Industry: made-to-order products (branded inflatables) &middot; outside accounting</span></p>
  <div class="kpis">
-  <div class="mcard"><b>#1 of 17</b><p>Close rate for the year: 20.5% - the first rep to average over 20%. Company-wide: 10.6%. Started the year 13th of 15.</p><span>Company leaderboard, Jan 1 to Sep 30</span></div>
+  <div class="mcard"><b>#1 of 17</b><p>Brooks&rsquo;s process. Close rate for the year: 20.5% - the first sales process to average over 20%. Started the year 13th of 15.</p><span>Company leaderboard, Jan 1 to Sep 30</span></div>
   <div class="mcard"><b><span class="from">24 hrs &rarr;</span>35 min</b><p>Median time from a web inquiry to the first reply, February vs July.</p><span>Web-form leads with exact timestamps</span></div>
   <div class="mcard"><b><span class="from">37% &rarr;</span>59%</b><p>Share of first replies that got an answer from the customer, February to April vs July.</p><span>Work mailbox, 5,730 messages</span></div>
   <div class="mcard"><b><span class="from">10 hrs &rarr;</span>4-8</b><p>Length of a busy-season workday, before and after the system.</p><span>Operator's estimate</span></div>
@@ -148,8 +151,8 @@ footer .flinks a:hover{color:var(--ink)}
  </div>
  <figure class="board">
   <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Company sales leaderboard</b><span>&middot; Account executives &middot; Jan 1 to Sep 30, 2026</span></div>
-  <img src="ai-sales-enablement/assets/leaderboard.webp" width="2122" height="1358" alt="Company sales leaderboard with Brooks Golden ranked number 1 of 17 reps at a 20.5 percent close rate, above a company average of 10.6 percent" loading="lazy"></div>
-  <figcaption><b>The year-to-date leaderboard, captured in mid-September.</b> Other reps' names, sales scores and gross-profit columns are blurred.</figcaption>
+  <img src="ai-sales-enablement/assets/leaderboard.webp" width="2122" height="1358" alt="Company sales leaderboard with Brooks Golden ranked number 1 of 17 at a 20.5 percent close rate" loading="lazy"></div>
+  <figcaption><b>The year-to-date leaderboard, captured in mid-September.</b> Other sellers' names, sales scores and gross-profit columns are blurred.</figcaption>
  </figure>
  <p style="margin-top:36px"><a class="btn btn-ghost" href="ai-sales-enablement/">Read the full case study</a></p>
 </div></section>
@@ -165,9 +168,9 @@ footer .flinks a:hover{color:var(--ink)}
    <div class="blk"><b>Problem</b>The firm has multiple working surfaces for client and project status. Practice management is intended to be the system of record, while spreadsheets, Slack and newer task-management tooling also contain operational truth. Owners cannot always see the true stage, blocker, owner and next action without reconstructing it manually.</div>
    <div class="blk build"><b>Build</b>Create a thin operating layer above and between the current systems that derives a reliable view of client work and lets natural communication (including Slack instructions) update the workflow without another manual tracker.</div>
    <div class="flow">
-    <div class="srcs"><span class="schip">Slack</span><span class="schip">Karbon</span><span class="schip">Spreadsheets</span></div>
+    <div class="srcs"><span class="schip"><img src="../case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip"><img src="../karbon-mark.svg" alt="">Karbon</span><span class="schip">Spreadsheets</span></div>
     <div class="arr">&rarr;</div>
-    <div class="dst">Keelwater layer: unified client &amp; work view</div>
+    <div class="dst"><img src="../keel-mark.svg" alt="">Keelwater layer: unified client &amp; work view</div>
    </div>
    <div class="status"><span class="st">In progress &middot; baseline measurement underway</span></div>
   </div>
@@ -177,9 +180,9 @@ footer .flinks a:hover{color:var(--ink)}
    <div class="blk"><b>Problem</b>Recurring advisory work requires staff to gather current books, payroll, prior returns, client history and other context. Opening and reconstructing that context client by client creates repetitive work.</div>
    <div class="blk build"><b>Build</b>Create secure, permissioned access to the relevant client financial context so the firm's existing advisory and AI process can begin with the information already assembled for human review.</div>
    <div class="flow">
-    <div class="srcs"><span class="schip">QuickBooks clients</span><span class="schip">Payroll</span><span class="schip">Prior returns</span><span class="schip">Client history</span></div>
+    <div class="srcs"><span class="schip"><img src="../quickbooks-mark.svg" alt="">QuickBooks clients</span><span class="schip">Payroll</span><span class="schip">Prior returns</span><span class="schip">Client history</span></div>
     <div class="arr">&rarr;</div>
-    <div class="dst">Keelwater layer: advisory context for human review</div>
+    <div class="dst"><img src="../keel-mark.svg" alt="">Keelwater layer: advisory context for human review</div>
    </div>
    <div class="status"><span class="st">In progress &middot; baseline measurement underway</span></div>
   </div>
