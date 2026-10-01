@@ -140,13 +140,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .sv-panel{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px}
 .sv-lbl{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .sv-chips{display:flex;flex-wrap:wrap;gap:10px}
+.sv-panel{text-align:center}
+.sv-title{display:block;font-weight:800;color:#123526;font-size:14px;letter-spacing:.12em;margin-bottom:4px}
+.sv-frag .sv-chips{position:relative;display:block;height:280px}
+.sv-frag .schip{position:absolute;left:var(--x);top:var(--y);transform:translate(calc(var(--x) * -1),calc(var(--y) * -1))}
 .schip{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:7px}
 .schip img{height:14px;width:auto;filter:grayscale(100%);opacity:.8}
 .sv-band img{height:15px;width:auto;vertical-align:-2px;margin-right:7px}
 .sv-frag .schip{border-style:dashed;background:var(--white)}
 .sv-unified .sv-chips{justify-content:center}
 .sv-band{margin-top:16px;background:var(--green);color:var(--paper);border-radius:8px;padding:10px 16px;text-align:center;font-size:13.5px;font-weight:600;letter-spacing:.04em;position:relative}
-.sv-band:before{content:"";position:absolute;left:8%;right:8%;top:-16px;height:16px;border-left:1.5px solid var(--green-2);border-right:1.5px solid var(--green-2)}
 .sv-band span{display:block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#d4b37a;margin-top:2px}
 footer .flinks{display:flex;gap:20px;flex-wrap:wrap}
 footer .flinks a{text-decoration:none}
@@ -197,11 +200,11 @@ footer .flinks a:hover{color:var(--ink)}
  <p class="lede" style="max-width:780px">Your team already has tax software, practice management, QuickBooks, email, portals and increasingly AI. But people still copy information between systems, rebuild client context, chase requests, update trackers and remember handoffs manually. Keelwater removes the work that lives between the tools.</p>
  <div class="splitvis">
   <div class="sv-panel sv-frag">
-   <div class="sv-lbl">Current state &middot; Good tools. Manual coordination.</div>
-   <div class="sv-chips"><span class="schip">Tax software</span><span class="schip">Practice management</span><span class="schip"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip">Email</span><span class="schip"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip">Spreadsheets</span></div>
+   <div class="sv-lbl"><strong class="sv-title">Current State</strong>Good tools. Manual coordination.</div>
+   <div class="sv-chips"><span class="schip" style="--x:3%;--y:4%">Tax software</span><span class="schip" style="--x:97%;--y:20%">Practice management</span><span class="schip" style="--x:18%;--y:44%"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip" style="--x:88%;--y:60%">Email</span><span class="schip" style="--x:4%;--y:84%"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip" style="--x:72%;--y:98%">Spreadsheets</span></div>
   </div>
   <div class="sv-panel sv-unified">
-   <div class="sv-lbl">With Keelwater &middot; Connected systems. Automated handoffs.</div>
+   <div class="sv-lbl"><strong class="sv-title">Keelwater</strong>Connected systems. Automated handoffs.</div>
    <div class="sv-chips"><span class="schip">Tax software</span><span class="schip">Practice management</span><span class="schip"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip">Email</span><span class="schip"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip">Spreadsheets</span></div>
    <div class="sv-band"><img src="keel-mark-inverse.svg" alt="">Keelwater operating layer<span>One workflow &middot; one current state &middot; human review</span></div>
   </div>
