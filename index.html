@@ -154,7 +154,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer .flinks{display:flex;gap:20px;flex-wrap:wrap}
 footer .flinks a{text-decoration:none}
 footer .flinks a:hover{color:var(--ink)}
-@media (max-width:900px){.splitvis{grid-template-columns:1fr}.sv-frag .sv-chips{height:280px}.sv-frag .schip:nth-child(2){--y:20%!important}.sv-frag .schip:nth-child(3){--x:18%!important;--y:44%!important}.sv-frag .schip:nth-child(4){--x:88%!important;--y:60%!important}.sv-frag .schip:nth-child(5){--y:84%!important}}
+@media (max-width:900px){.splitvis{grid-template-columns:1fr}.sv-frag .sv-chips{height:280px}.sv-frag .schip:nth-child(2){--y:24%!important}.sv-frag .schip:nth-child(3){--x:50%!important;--y:44%!important}.sv-frag .schip:nth-child(4){--x:3%!important;--y:66%!important}.sv-frag .schip:nth-child(5){--x:24%!important;--y:98%!important}}
 @media (max-width:520px){.rail,.trust{grid-template-columns:1fr}.wrap{padding:0 20px}.nav .btn{display:none}.cmp{font-size:14px}.cmp td,.cmp th{padding-left:8px;padding-right:8px}}
 </style>
 </head>
@@ -215,7 +215,7 @@ footer .flinks a:hover{color:var(--ink)}
  <div class="splitvis">
   <div class="sv-panel sv-frag">
    <div class="sv-lbl"><strong class="sv-title">Current State</strong>Good tools. Manual coordination.</div>
-   <div class="sv-chips"><span class="schip" style="--x:3%;--y:4%">Tax software</span><span class="schip" style="--x:97%;--y:4%">Practice management</span><span class="schip" style="--x:8%;--y:50%"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip" style="--x:94%;--y:58%">Email</span><span class="schip" style="--x:4%;--y:92%"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip" style="--x:72%;--y:98%">Spreadsheets</span></div>
+   <div class="sv-chips"><span class="schip" style="--x:4%;--y:4%">Tax software</span><span class="schip" style="--x:95%;--y:10%">Practice management</span><span class="schip" style="--x:50%;--y:48%"><img src="quickbooks-mark.svg" alt="">QuickBooks</span><span class="schip" style="--x:3%;--y:67%">Email</span><span class="schip" style="--x:24%;--y:98%"><img src="case-studies/ai-sales-enablement/assets/logos/slack.svg" alt="">Slack</span><span class="schip" style="--x:96%;--y:94%">Spreadsheets</span></div>
   </div>
   <div class="sv-panel sv-unified">
    <div class="sv-lbl"><strong class="sv-title">Keelwater</strong>Connected systems. Automated handoffs.</div>
@@ -353,6 +353,91 @@ footer .flinks a:hover{color:var(--ink)}
  <a class="btn btn-primary" style="background:#d4b37a;color:var(--ink)" href="mailto:hello@keelwater.com?subject=Keelwater%20Design%20Partnership&body=I%20think%20augmenting%20the%20workflows%20of%20%5BYour%20Company%5D%20with%20AI%20could%20help%20with%20%5BYour%20Goal%5D.%20Can%20you%20tell%20me%20more%3F">Explore a Design Partnership</a>
  <p class="source" style="margin-top:22px">Or email hello@keelwater.com</p>
 </div></section>
+<script>
+// Gentle screensaver motion, scoped to the disconnected Current State tools.
+(function () {
+  const box = document.querySelector('.sv-frag .sv-chips');
+  if (!box) return;
+  const chips = Array.from(box.querySelectorAll('.schip'));
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const seeds = [[.04,.04],[.95,.10],[.50,.48],[.03,.67],[.24,.98],[.96,.94]];
+  const directions = [[12,9],[-10,12],[11,-9],[13,-8],[-12,-10],[-11,8]];
+  const gap = 6;
+  let bodies = [], width = 0, height = 0, frame = 0, last = 0, visible = false;
+  function overlaps(a, b) {
+    return a.x < b.x + b.w + gap && a.x + a.w + gap > b.x &&
+      a.y < b.y + b.h + gap && a.y + a.h + gap > b.y;
+  }
+  function paint() {
+    bodies.forEach(b => { b.el.style.transform = 'translate3d(' + b.x + 'px,' + b.y + 'px,0)'; });
+  }
+  function layout() {
+    width = box.clientWidth; height = box.clientHeight;
+    if (!width || !height) return;
+    bodies = chips.map((el, i) => ({el, i, w:el.offsetWidth, h:el.offsetHeight,
+      x:0, y:0, vx:directions[i][0], vy:directions[i][1]}));
+    const placed = [];
+    // Place QuickBooks near the center first, then scatter the other chips.
+    [2,1,0,5,4,3].forEach(i => {
+      const b = bodies[i], maxX = Math.max(0,width-b.w), maxY = Math.max(0,height-b.h);
+      const targetX = maxX*seeds[i][0], targetY = maxY*seeds[i][1];
+      let best = null, distance = Infinity;
+      for (let y=0;y<=maxY;y+=4) for (let x=0;x<=maxX;x+=4) {
+        const candidate = {x,y,w:b.w,h:b.h};
+        if (placed.some(p => overlaps(candidate,p))) continue;
+        const d = (x-targetX)**2 + (y-targetY)**2;
+        if (d<distance) { best=candidate; distance=d; }
+      }
+      if (best) { b.x=best.x; b.y=best.y; }
+      placed.push(b);
+      b.el.style.left = '0'; b.el.style.top = '0';
+    });
+    last = 0; paint(); sync();
+  }
+  function bounds(b) {
+    const maxX = Math.max(0,width-b.w), maxY = Math.max(0,height-b.h);
+    if (b.x<=0) { b.x=0; b.vx=Math.abs(b.vx); }
+    if (b.x>=maxX) { b.x=maxX; b.vx=-Math.abs(b.vx); }
+    if (b.y<=0) { b.y=0; b.vy=Math.abs(b.vy); }
+    if (b.y>=maxY) { b.y=maxY; b.vy=-Math.abs(b.vy); }
+  }
+  function step(time) {
+    frame = 0;
+    if (!visible || document.hidden || reduced.matches) { last=0; return; }
+    const dt = last ? Math.min((time-last)/1000,.032) : 0; last=time;
+    bodies.forEach(b => { b.x+=b.vx*dt; b.y+=b.vy*dt; bounds(b); });
+    // AABB collisions retain the readable rectangular chips and a small air gap.
+    for (let pass=0;pass<4;pass++) {
+      for (let i=0;i<bodies.length;i++) for (let j=i+1;j<bodies.length;j++) {
+        const a=bodies[i], b=bodies[j];
+        if (!overlaps(a,b)) continue;
+        const dx=(b.x+b.w/2)-(a.x+a.w/2), dy=(b.y+b.h/2)-(a.y+a.h/2);
+        const px=(a.w+b.w)/2+gap-Math.abs(dx), py=(a.h+b.h)/2+gap-Math.abs(dy);
+        const axis=px<py?'x':'y', velocity=axis==='x'?'vx':'vy';
+        const sign=(axis==='x'?dx:dy)>=0?1:-1, amount=(axis==='x'?px:py)/2+.01;
+        a[axis]-=sign*amount; b[axis]+=sign*amount;
+        if ((a[velocity]-b[velocity])*sign>0) {
+          const v=a[velocity]; a[velocity]=b[velocity]; b[velocity]=v;
+        }
+        bounds(a); bounds(b);
+      }
+    }
+    bodies.forEach(bounds);
+    paint(); frame=requestAnimationFrame(step);
+  }
+  function sync() {
+    if (frame) { cancelAnimationFrame(frame); frame=0; }
+    last=0;
+    if (visible && !document.hidden && !reduced.matches) frame=requestAnimationFrame(step);
+  }
+  new IntersectionObserver(entries => { visible=entries[0].isIntersecting; sync(); }).observe(box);
+  new ResizeObserver(layout).observe(box);
+  document.addEventListener('visibilitychange',sync);
+  reduced.addEventListener('change',layout);
+  layout();
+  if (document.fonts) document.fonts.ready.then(layout);
+}());
+</script>
 </main>
 
 <footer><div class="wrap">
@@ -364,5 +449,6 @@ footer .flinks a:hover{color:var(--ink)}
 function kwMenu(){document.body.classList.toggle('menu-open');var b=document.querySelector('.menu-btn');if(b)b.setAttribute('aria-expanded',document.body.classList.contains('menu-open'))}
 document.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open')})})
 </script>
+
 </body>
                                                                                                                                                                                          </html>
