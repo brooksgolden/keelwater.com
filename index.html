@@ -374,7 +374,7 @@ footer .flinks a:hover{color:var(--ink)}
   function layout() {
     width = box.clientWidth; height = box.clientHeight;
     if (!width || !height) return;
-    bodies = chips.map((el, i) => ({el, i, w:el.offsetWidth, h:el.offsetHeight,
+    bodies = chips.map((el, i) => ({el, i, w:el.getBoundingClientRect().width, h:el.getBoundingClientRect().height,
       x:0, y:0, vx:directions[i][0], vy:directions[i][1]}));
     const placed = [];
     // Place QuickBooks near the center first, then scatter the other chips.
