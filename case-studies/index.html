@@ -94,6 +94,12 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:12px;max-width:760px}
 .measure{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;align-items:center}
 .measure .lab{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:8px}
 .chip{border:1px solid var(--line);background:var(--white);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500;color:var(--ink-2)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lede,.dark p{color:#c9d1cc}
+.dark .eyebrow{color:#d4b37a}
+.dark .btn-primary{background:#d4b37a;color:var(--ink)}
+.dark .btn-ghost{border-color:var(--paper);color:var(--paper)}
+.dark .btn-ghost:hover{background:var(--paper);color:var(--ink)}
 .cta{text-align:center}
 .cta .lede{margin:0 auto 34px}
 footer{padding:40px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
@@ -191,7 +197,7 @@ footer .flinks a:hover{color:var(--ink)}
  <p class="framing" style="font-size:14px;margin-top:22px">Pilot presented anonymously. Results published only when measured.</p>
 </div></section>
 
-<section class="cta"><div class="wrap">
+<section class="dark cta"><div class="wrap">
  <div class="eyebrow">Next step</div>
  <h2 style="max-width:760px;margin-left:auto;margin-right:auto">Have the same problem?</h2>
  <p class="lede">Show us one workflow your team still manages by hand, and we'll show you where the coordination can move to software.</p>
@@ -209,4 +215,4 @@ function kwMenu(){document.body.classList.toggle('menu-open');var b=document.que
 document.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open')})})
 </script>
 </body>
- </html>
+</html>
